@@ -4,7 +4,11 @@ description: Learn all about Slash Commands and how to implement them into your 
 ---
 
 import { Aside, TabItem, Tabs } from "@astrojs/starlight/components";
-import DiscordComponent from "../../../../components/DiscordComponent.astro";
+import NewDiscordComponent from "../../../../components/NewDiscordComponent.astro";
+import PingPayload from "../../../../payloads/interactions/application-commands/slash-commands-ping.json";
+import AddPayload from "../../../../payloads/interactions/application-commands/slash-commands-add.json";
+import JoinPayload from "../../../../payloads/interactions/application-commands/slash-commands-join.json";
+import AnimalPayload from "../../../../payloads/interactions/application-commands/slash-commands-animal.json";
 
 On March 24, 2021, Discord added Slash Commands to Discord as an easier, more efficient, and better way of using bot commands. Pycord has implemented Slash Commands into the library, so it's simple, efficient, and familiar.
 
@@ -32,12 +36,7 @@ async def ping(ctx): # a slash command will be created with the name "ping"
 bot.run("TOKEN")
 ```
 
-<DiscordComponent>
-    <discord-message profile="robocord">
-        <discord-command slot="reply" profile="bob" command="/ping"></discord-command>
-        Pong! Latency is 335ms.
-    </discord-message>
-</DiscordComponent>
+<NewDiscordComponent messages={[PingPayload]} />
 
 Let's go through the code.
 

@@ -4,7 +4,17 @@ description: Learn about Discord's Interactions including Application Commands a
 ---
 
 import { Aside } from "@astrojs/starlight/components";
-import DiscordComponent from "../../../components/DiscordComponent.astro";
+import NewDiscordComponent from "../../../components/NewDiscordComponent.astro";
+import PingResponsePayload from "../../../payloads/interactions/index/ping-response.json";
+import ReverseMessageUserMsgPayload from "../../../payloads/interactions/index/reverse-message-user-msg.json";
+import ReverseMessageResponsePayload from "../../../payloads/interactions/index/reverse-message-response.json";
+import UserAgeDorukyumMsgPayload from "../../../payloads/interactions/index/user-age-dorukyum-msg.json";
+import UserAgeBobResponsePayload from "../../../payloads/interactions/index/user-age-bob-response.json";
+import UserAgeDorukyumThinkingPayload from "../../../payloads/interactions/index/user-age-dorukyum-thinking.json";
+import UserAgeDorukyumResponsePayload from "../../../payloads/interactions/index/user-age-dorukyum-response.json";
+import ButtonsExamplePayload from "../../../payloads/interactions/index/buttons-example.json";
+import SelectMenuExamplePayload from "../../../payloads/interactions/index/select-menu-example.json";
+import ModalButtonPayload from "../../../payloads/interactions/index/modal-button.json";
 import { emojiToTwemoji } from "../../../utils/emoji";
 
 In December 2020, Discord released their first Interaction: the [Slash Command](https://discord.com/developers/docs/interactions/application-commands#slash-commands). Since then, Discord has added many types of Interactions, including:
@@ -35,12 +45,7 @@ Slash Commands were the first Interaction added to Discord. They're easy to use 
     will get your application denied.
 </Aside>
 
-<DiscordComponent>
-    <discord-message profile="robocord">
-        <discord-command slot="reply" profile="bob" command="/ping"></discord-command>
-        Pong! Latency is 335ms.
-    </discord-message>
-</DiscordComponent>
+<NewDiscordComponent messages={[PingResponsePayload]} />
 
 This is what a Slash Command looks like. Not too different from a prefix command, apart from the note telling you who invoked it. A Slash Command's fields can accept any of the following:
 
@@ -58,28 +63,13 @@ Message Commands and User Commands were both introduced at around the same time,
 
 Here's an example of a Message Command:
 
-<DiscordComponent>
-    <discord-message profile="dorukyum">Hello World!</discord-message>
-    <discord-message profile="robocord">
-        <discord-command slot="reply" profile="bob" command="Reverse Message"></discord-command>
-        Message 930650407917748286 reversed is "!dlroW olleH"
-    </discord-message>
-</DiscordComponent>
+<NewDiscordComponent messages={[ReverseMessageUserMsgPayload, ReverseMessageResponsePayload]} />
 
 And here's an example of a User Command:
 
-<DiscordComponent>
-    <discord-message profile="dorukyum">User has been on Discord for a long time</discord-message>
-    <discord-message profile="robocord">
-        <discord-command slot="reply" profile="bob" command="User Age"></discord-command>
-        User is 1 week old.
-    </discord-message>
-    <discord-message profile="robocord">
-        <discord-command slot="reply" profile="dorukyum" command="User Age"></discord-command>
-        User is 40 years old.
-    </discord-message>
-    <discord-message profile="dorukyum">🤔</discord-message>
-</DiscordComponent>
+<NewDiscordComponent
+    messages={[UserAgeDorukyumMsgPayload, UserAgeBobResponsePayload, UserAgeDorukyumResponsePayload, UserAgeDorukyumThinkingPayload]}
+/>
 
 Pretty cool, right? To learn more about these two, please read the [Context Menus guide](/interactions/application-commands/context-menus/).
 
@@ -125,18 +115,7 @@ So, based on this, you could have a maximum of 25 Buttons in a View with no Sele
 
 Buttons are the first of the Message Components. They allow for quick responses to prompts, such as for canceling or continuing an action. Of course, these aren't their only uses; people have created awesome things with Buttons, such as calculators, games, and more!
 
-<DiscordComponent>
-    <discord-message profile="robocord">
-        Discord Buttons are awesome!
-        <discord-attachments slot="components">
-            <discord-action-row>
-                <discord-button type="primary" emoji={emojiToTwemoji("😎")}>
-                    Click me!
-                </discord-button>
-            </discord-action-row>
-        </discord-attachments>
-    </discord-message>
-</DiscordComponent>
+<NewDiscordComponent messages={[ButtonsExamplePayload]} />
 
 This is what a Button looks like, very simple and modern. To learn more about Buttons, refer to our [Buttons page](/interactions/ui-components/buttons/).
 
@@ -144,34 +123,7 @@ This is what a Button looks like, very simple and modern. To learn more about Bu
 
 Select Menus are the second of Discord's Message Components. They allow users to select from a list of choices, which your bot can then use. Select Menus are good for things such as choosing features, pages of a help menu, and more.
 
-<DiscordComponent>
-    <discord-message profile="robocord">
-        <discord-attachments slot="components">
-            <discord-string-select-menu>
-                <discord-string-select-menu-option
-                    label="Label"
-                    description="Description"
-                    emoji={emojiToTwemoji("👀")}
-                ></discord-string-select-menu-option>
-                <discord-string-select-menu-option label="Label no Emoji" description="Description no Emoji"></discord-string-select-menu-option>
-            </discord-string-select-menu>
-            <discord-string-select-menu disabled placeholder="Disabled Select Menu">
-                <discord-string-select-menu-option label="Test" description="Test" emoji={emojiToTwemoji("🔥")}></discord-string-select-menu-option>
-            </discord-string-select-menu>
-            <discord-string-select-menu placeholder="Overflow">
-                <discord-string-select-menu-option label="BobDotCom" description="Hi there 👋, I'm BobDotCom"></discord-string-select-menu-option>
-                <discord-string-select-menu-option label="Dorukyum" description="Hi there 👋, I'm Dorukyum"></discord-string-select-menu-option>
-                <discord-string-select-menu-option
-                    label="Lala Sabathil"
-                    description="Hi there, I'm Lala Sabathil"
-                ></discord-string-select-menu-option>
-                <discord-string-select-menu-option label="Paillat" description=":3"></discord-string-select-menu-option>
-                <discord-string-select-menu-option label="Swayam" description="Hi 👋, I'm Swayam"></discord-string-select-menu-option>
-                <discord-string-select-menu-option label="Robocord" description="Nvm I'm a silly robot"></discord-string-select-menu-option>
-            </discord-string-select-menu>
-        </discord-attachments>
-    </discord-message>
-</DiscordComponent>
+<NewDiscordComponent messages={[SelectMenuExamplePayload]} />
 
 This is what a Select Menu looks like. While not looking as good as Buttons, they still look great and have even greater possibilities. To learn more about Select Menus, please refer to our [Select Menus page](/interactions/ui-components/dropdowns/).
 
@@ -179,35 +131,6 @@ This is what a Select Menu looks like. While not looking as good as Buttons, the
 
 Text Modals are the most recently added Message Component in Discord. They're useful for text input and filling out forms, such as a sign-up for your bot's service. These are meant to replace long bot setup processes by allowing users to fill out multiple text fields, which avoids having the user send multiple messages for the bot. Modals can be accessed by either invoking an Application Command or by interacting with another UI Component.
 
-<DiscordComponent>
-    <discord-message profile="robocord">
-        You can spawn a modal by clicking a button!
-        <discord-attachments slot="components">
-            <discord-action-row>
-                <discord-button type="primary" modal-id="discord-modal">
-                    Click me for a modal
-                </discord-button>
-            </discord-action-row>
-        </discord-attachments>
-    </discord-message>
-    <discord-modal modal-id="discord-modal" modal-title="Solution" profile="robocord">
-        <discord-input-text
-            type="short"
-            required
-            label="required short"
-            placeholder="Give me a value"
-            min-length="1"
-            max-length="100"
-        ></discord-input-text>
-        <discord-input-text
-            type="paragraph"
-            required
-            label="required paragraph"
-            placeholder="Give me a value"
-            min-length="3"
-            max-length="100"
-        ></discord-input-text>
-    </discord-modal>
-</DiscordComponent>
+<NewDiscordComponent messages={[ModalButtonPayload]} />
 
 This is what a Text Modal looks like, easy to use and one of the most useful Message Components yet. To learn more about Text Modals, please visit our [Modal Dialogs page](/interactions/ui-components/modal-dialogs/).

@@ -5,6 +5,20 @@ description: All about handling errors.
 
 import { Aside } from "@astrojs/starlight/components";
 import DiscordComponent from "../../../components/DiscordComponent.astro";
+import NewDiscordComponent from "../../../components/NewDiscordComponent.astro";
+import FeedbackResponsePayload from "@payloads/popular-topics/error-handling/feedback-response.json";
+import FeedbackUserMessagePayload from "@payloads/popular-topics/error-handling/feedback-user-message.json";
+import FeedbackThanksPayload from "@payloads/popular-topics/error-handling/feedback-thanks.json";
+import FeedbackTimeoutResponsePayload from "@payloads/popular-topics/error-handling/feedback-timeout-response.json";
+import FeedbackTimeoutErrorPayload from "@payloads/popular-topics/error-handling/feedback-timeout-error.json";
+import SecretOwnerResponsePayload from "@payloads/popular-topics/error-handling/secret-owner-response.json";
+import SecretNonOwnerResponsePayload from "@payloads/popular-topics/error-handling/secret-non-owner-response.json";
+import AvatarDmUserMsgPayload from "@payloads/popular-topics/error-handling/avatar-dm-user-msg.json";
+import AvatarDmResponsePayload from "@payloads/popular-topics/error-handling/avatar-dm-response.json";
+import AvatarGuildUserMsgPayload from "@payloads/popular-topics/error-handling/avatar-guild-user-msg.json";
+import AvatarGuildErrorPayload from "@payloads/popular-topics/error-handling/avatar-guild-error.json";
+import PingCooldownFirstPayload from "@payloads/popular-topics/error-handling/ping-cooldown-first.json";
+import PingCooldownErrorPayload from "@payloads/popular-topics/error-handling/ping-cooldown-error.json";
 
 ## About
 
@@ -52,30 +66,13 @@ bot.run("TOKEN")
 
 If you respond within 30 seconds, the interaction will look like so:
 
-<DiscordComponent>
-    <discord-message profile="robocord">
-        <discord-command slot="reply" profile="dorukyum" command="/feedback"></discord-command>
-        Hey, Dorukyum! Send your feedback within the next 30 seconds please!
-    </discord-message>
-    <discord-message profile="dorukyum">Great bot!</discord-message>
-    <discord-message profile="robocord">
-        Thanks for the feedback!
-        <br />
-        Received feedback: <code>Great bot!</code>
-    </discord-message>
-</DiscordComponent>
+<NewDiscordComponent messages={[FeedbackResponsePayload, FeedbackUserMessagePayload, FeedbackThanksPayload]} />
 
 <br />
 
 Otherwise, if you don't respond in time, the interaction will go as follows:
 
-<DiscordComponent>
-    <discord-message profile="robocord">
-        <discord-command slot="reply" profile="dorukyum" command="/feedback"></discord-command>
-        Hey, Dorukyum! Send your feedback within the next 30 seconds please!
-    </discord-message>
-    <discord-message profile="robocord">Timed out, please try again!</discord-message>
-</DiscordComponent>
+<NewDiscordComponent messages={[FeedbackTimeoutResponsePayload, FeedbackTimeoutErrorPayload]} />
 
 <br />
 
@@ -125,23 +122,13 @@ bot.run("TOKEN")
 
 If your ID is registered as the owner ID, you'll get the following:
 
-<DiscordComponent>
-    <discord-message profile="robocord">
-        <discord-command slot="reply" profile="dorukyum" command="/secret"></discord-command>
-        Hey Dorukyum! This is a secret command!
-    </discord-message>
-</DiscordComponent>
+<NewDiscordComponent messages={[SecretOwnerResponsePayload]} />
 
 <br />
 
 Any other user whose ID doesn't match the bot owner's will get the following:
 
-<DiscordComponent>
-    <discord-message profile="robocord">
-        <discord-command slot="reply" profile="bob" command="/secret"></discord-command>
-        Sorry, only the bot owner can use this command!
-    </discord-message>
-</DiscordComponent>
+<NewDiscordComponent messages={[SecretNonOwnerResponsePayload]} />
 
 <br />
 
@@ -207,43 +194,13 @@ bot.run("TOKEN")
 
 If you use this command in a DM context, you'll get the following:
 
-<DiscordComponent>
-  <discord-message profile="bob">
-    !avatar
-  </discord-message>
-
-  <discord-message profile="robocord">
-    <discord-reply slot="reply" profile="bob" highlight>
-      !avatar
-    </discord-reply>
-
-    <discord-embed slot="embeds" embed-title="Avatar" url="/avatar/bob.webp" border-color="#5865F2">
-      Here's your enlarged avatar, BobDotCom!
-    </discord-embed>
-
-  </discord-message>
-
-</DiscordComponent>
+<NewDiscordComponent messages={[AvatarDmUserMsgPayload, AvatarDmResponsePayload]} />
 
 <br />
 
 Otherwise, if used in a guild context:
 
-<DiscordComponent>
-  <discord-message profile="bob">
-    !avatar
-  </discord-message>
-
-  <discord-message profile="robocord">
-    <discord-reply slot="reply" profile="bob" highlight>
-      !avatar
-    </discord-reply>
-
-    Sorry, you can only use this in private messages!
-
-  </discord-message>
-
-</DiscordComponent>
+<NewDiscordComponent messages={[AvatarGuildUserMsgPayload, AvatarGuildErrorPayload]} />
 
 <br />
 
@@ -288,16 +245,7 @@ If you've subclassed your bot, the `on_application_command_error` event will be 
 
 The error handling used above will yield this interaction if the command is used again too quickly:
 
-<DiscordComponent>
-    <discord-message profile="robocord">
-        <discord-command slot="reply" profile="bob" command="/ping"></discord-command>
-        Pong! <code>49</code> ms.
-    </discord-message>
-    <discord-message profile="robocord">
-        <discord-command slot="reply" profile="bob" command="/ping"></discord-command>
-        This command is currently on cooldown!
-    </discord-message>
-</DiscordComponent>
+<NewDiscordComponent messages={[PingCooldownFirstPayload, PingCooldownErrorPayload]} />
 
 <br />
 

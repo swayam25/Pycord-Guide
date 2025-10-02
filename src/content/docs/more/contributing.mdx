@@ -5,7 +5,11 @@ description: Learn how to contribute to the Pycord Guide.
 
 import { Aside, Steps, TabItem, Tabs } from "@astrojs/starlight/components";
 import DiscordComponent from "../../../components/DiscordComponent.astro";
+import NewDiscordComponent from "../../../components/NewDiscordComponent.astro";
 import { emojiToTwemoji } from "../../../utils/emoji";
+import DorukyumHelloPayload from "@payloads/more/contributing/dorukyum-hello-user-msg.json";
+import UpdateSlashResponsePayload from "@payloads/more/contributing/update-slash-response.json";
+import WorkButtonsResponsePayload from "@payloads/more/contributing/work-buttons-response.json";
 
 This page outlines some of the basic syntax you need to know to contribute to the guide. We recommend you also check out:
 
@@ -153,9 +157,7 @@ This is where you list a `discord-message`.
 </DiscordComponent>
 ```
 
-<DiscordComponent>
-    <discord-message profile="dorukyum">Hello!</discord-message>
-</DiscordComponent>
+<NewDiscordComponent messages={[DorukyumHelloPayload]} />
 
 <br />
 
@@ -178,12 +180,7 @@ To make a message authored by a slash command, do the following:
 </DiscordComponent>
 ```
 
-<DiscordComponent>
-    <discord-message profile="robocord">
-        <discord-command slot="reply" profile="bob" command="/update"></discord-command>
-        Updated dependencies to the latest version!
-    </discord-message>
-</DiscordComponent>
+<NewDiscordComponent messages={[UpdateSlashResponsePayload]} />
 
 ### Buttons
 
@@ -208,22 +205,7 @@ To make a message with buttons, do the following:
 </DiscordComponent>
 ```
 
-<DiscordComponent>
-    <discord-message profile="robocord">
-        <discord-command slot="reply" profile="bob" command="/work"></discord-command>
-        Work Done!
-        <discord-attachments slot="components">
-            <discord-action-row>
-                <discord-button type="primary" emoji={emojiToTwemoji("📝")}>
-                    Work More
-                </discord-button>
-                <discord-button type="secondary" emoji={emojiToTwemoji("💤")}>
-                    Sleep
-                </discord-button>
-            </discord-action-row>
-        </discord-attachments>
-    </discord-message>
-</DiscordComponent>
+<NewDiscordComponent messages={[WorkButtonsResponsePayload]} />
 
 ### Using Emojis
 

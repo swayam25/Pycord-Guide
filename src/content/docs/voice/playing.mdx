@@ -4,6 +4,8 @@ description: Learn how to play audio using Wavelink in Pycord
 ---
 
 import DiscordComponent from "../../../components/DiscordComponent.astro";
+import NewDiscordComponent from "../../../components/NewDiscordComponent.astro";
+import NowPlayingPayload from "@payloads/voice/playing-now-playing.json";
 
 Pycord and Wavelink try to keep the playing of audio as simple and easy as possible, to keep making Discord
 bots of any kind easy for all audiences. This guide provides simple and easy examples of using the
@@ -89,12 +91,7 @@ async def play(ctx, search: str):
   await ctx.respond(f"Now playing: `{song.title}`") # and return a success message
 ```
 
-<DiscordComponent>
-    <discord-message profile="robocord">
-        <discord-command slot="reply" profile="bob" command="/play"></discord-command>
-        Now playing: <code>Never Gonna Give You Up</code>
-    </discord-message>
-</DiscordComponent>
+<NewDiscordComponent messages={[NowPlayingPayload]} />
 
 <br />
 

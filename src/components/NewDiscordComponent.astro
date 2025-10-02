@@ -1,0 +1,10 @@
+---
+import { MessageGroup } from "@widgetbot/message-renderer/dist/message-renderer.mjs";
+let { messages } = Astro.props;
+---
+
+<div class="discord-messages-container flex flex-col rounded-[1px] border border-gray-600 py-8 align-middle">
+    <div class="discord-messages">
+        <MessageGroup messages={messages} client:only="react" />
+    </div>
+</div>

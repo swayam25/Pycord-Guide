@@ -4,7 +4,11 @@
     "exclude": ["dist"],
     "compilerOptions": {
         "paths": {
-            "@images/*": ["./src/images/*"]
-        }
+            "@images/*": ["./src/images/*"],
+            "@components/*": ["./src/components/*"],
+            "@payloads/*": ["./src/payloads/*"]
+        },
+        "jsx": "react-jsx",
+        "jsxImportSource": "react"
     }
 }
