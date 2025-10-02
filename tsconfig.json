@@ -3,8 +3,8 @@
     "include": [".astro/types.d.ts", "**/*"],
     "exclude": ["dist"],
     "compilerOptions": {
-      "paths": {
-        "@images/*": ["./src/images/*"],
-      }
+        "paths": {
+            "@images/*": ["./src/images/*"]
+        }
     }
 }
