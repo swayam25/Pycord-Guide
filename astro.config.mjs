@@ -12,7 +12,7 @@ export default defineConfig({
             description: "The comprehensive guide for building Discord bots with Pycord - the modern Python Discord API wrapper.",
             favicon: "/favicon.ico",
             logo: {
-                src: "./public/logo.webp",
+                src: "./src/images/logo.webp",
                 alt: "Pycord Logo",
             },
             customCss: ["/src/styles/app.css"],
