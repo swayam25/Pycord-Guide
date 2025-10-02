@@ -4,9 +4,8 @@ description: Learn all about implementing buttons in your Discord Bot using Pyco
 ---
 
 import { Aside, TabItem, Tabs } from "@astrojs/starlight/components";
-import NewDiscordComponent from "../../../../components/NewDiscordComponent.astro";
-import ButtonResponsePayload from "../../../../payloads/interactions/ui-components/buttons-button-response.json";
-import { emojiToTwemoji } from "../../../../utils/emoji";
+import NewDiscordComponent from "$components/NewDiscordComponent.astro";
+import ButtonResponsePayload from "$payloads/interactions/ui-components/buttons-button-response.json";
 
 On May 26, 2021, Discord added a new interaction called buttons. Instead of reactions, bots could now send buttons and users could use them to interact with bots. This opened up a whole new world of possibilities for bots. Soon after, developers made calculators, polls, and games like blackjack, UNO, and even Minecraft! Buttons provided a clear and easy to use interface for interacting with bots.
 
@@ -63,7 +62,7 @@ This is the basic syntax of creating a button. What you create with it is up to 
 
 Check out the [`discord.ButtonStyle`](https://docs.pycord.dev/en/stable/api/enums.html#discord.ButtonStyle) class for more information.
 
-![Different Button Styles](@images/interactions/button-styles.webp)
+![Different Button Styles]($images/interactions/button-styles.webp)
 
 You can set a button's style by adding the `style` argument in the [`discord.ui.button`](https://docs.pycord.dev/en/stable/api/ui_kit.html#discord.ui.button) decorator.
 

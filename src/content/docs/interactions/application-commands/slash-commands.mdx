@@ -4,11 +4,11 @@ description: Learn all about Slash Commands and how to implement them into your 
 ---
 
 import { Aside, TabItem, Tabs } from "@astrojs/starlight/components";
-import NewDiscordComponent from "../../../../components/NewDiscordComponent.astro";
-import PingPayload from "../../../../payloads/interactions/application-commands/slash-commands-ping.json";
-import AddPayload from "../../../../payloads/interactions/application-commands/slash-commands-add.json";
-import JoinPayload from "../../../../payloads/interactions/application-commands/slash-commands-join.json";
-import AnimalPayload from "../../../../payloads/interactions/application-commands/slash-commands-animal.json";
+import NewDiscordComponent from "$components/NewDiscordComponent.astro";
+import PingPayload from "$payloads/interactions/application-commands/slash-commands-ping.json";
+import AddPayload from "$payloads/interactions/application-commands/slash-commands-add.json";
+import JoinPayload from "$payloads/interactions/application-commands/slash-commands-join.json";
+import AnimalPayload from "$payloads/interactions/application-commands/slash-commands-animal.json";
 
 On March 24, 2021, Discord added Slash Commands to Discord as an easier, more efficient, and better way of using bot commands. Pycord has implemented Slash Commands into the library, so it's simple, efficient, and familiar.
 
@@ -96,7 +96,7 @@ bot.add_application_command(math)
 
 Here's what the registered subcommands will look like in the Slash Command Menu:
 
-![Picture of the subcommands in the Slash Command Menu](@images/interactions/groups-and-subcommands.webp)
+![Picture of the subcommands in the Slash Command Menu]($images/interactions/groups-and-subcommands.webp)
 
 You'll notice that there's the name of the Slash Command Group and then the name of the subcommand separated by a space.
 
@@ -159,16 +159,9 @@ Since you want different inputs from Options, you'll have to specify the type fo
     bot.run("TOKEN")
     ```
 
-    <DiscordComponent>
-      <discord-message profile="robocord">
-        <discord-command slot="reply" profile="bob" command="/add"></discord-command>
-        The sum of 1 and 1 is 2.
-      </discord-message>
-      <discord-message profile="robocord">
-        <discord-command slot="reply" profile="bob" command="/join"></discord-command>
-        When you join "Py" and "cord", you get: "Pycord".
-      </discord-message>
-    </DiscordComponent>
+    <NewDiscordComponent
+      messages={[AddPayload, JoinPayload]}
+    />
 
   </TabItem>
 
@@ -194,12 +187,9 @@ Since you want different inputs from Options, you'll have to specify the type fo
     bot.run("TOKEN")
     ```
 
-    <DiscordComponent>
-      <discord-message profile="robocord">
-        <discord-command slot="reply" profile="bob" command="/join"></discord-command>
-        When you join "Py" and "cord", you get: "Pycord".
-      </discord-message>
-    </DiscordComponent>
+    <NewDiscordComponent
+      messages={[JoinPayload]}
+    />
 
   </TabItem>
 </Tabs>
@@ -228,12 +218,7 @@ async def animal_command(
   await ctx.respond(f'You picked an animal type of `{animal_type}` that led you to pick `{animal}`!')
 ```
 
-<DiscordComponent>
-    <discord-message profile="robocord">
-        <discord-command slot="reply" profile="bob" command="/animal"></discord-command>
-        You picked an animal type of <code>Marine</code> that led you to pick <code>Shark</code>!
-    </discord-message>
-</DiscordComponent>
+<NewDiscordComponent messages={[AnimalPayload]} />
 
 <Aside type="caution">Autocomplete can **only** be used with slash commands.</Aside>
 

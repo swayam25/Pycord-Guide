@@ -1,7 +1,7 @@
 {
-    "id": "1234567890123456859",
+    "id": "1234567890123456840",
     "type": 0,
-    "content": "Hello!",
+    "content": "!help update_pycord",
     "channel_id": "9876543210987654321",
     "author": {
         "id": "543397958197182464",
@@ -25,7 +25,7 @@
     "pinned": false,
     "mention_everyone": false,
     "tts": false,
-    "timestamp": "2024-10-01T19:00:00.123456+00:00",
+    "timestamp": "2024-10-01T18:04:00.123456+00:00",
     "edited_timestamp": null,
     "flags": 0,
     "components": []

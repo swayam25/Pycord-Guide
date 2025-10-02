@@ -5,17 +5,16 @@ description: Learn about Discord's Interactions including Application Commands a
 
 import { Aside } from "@astrojs/starlight/components";
 import NewDiscordComponent from "../../../components/NewDiscordComponent.astro";
-import PingResponsePayload from "../../../payloads/interactions/index/ping-response.json";
-import ReverseMessageUserMsgPayload from "../../../payloads/interactions/index/reverse-message-user-msg.json";
-import ReverseMessageResponsePayload from "../../../payloads/interactions/index/reverse-message-response.json";
-import UserAgeDorukyumMsgPayload from "../../../payloads/interactions/index/user-age-dorukyum-msg.json";
-import UserAgeBobResponsePayload from "../../../payloads/interactions/index/user-age-bob-response.json";
-import UserAgeDorukyumThinkingPayload from "../../../payloads/interactions/index/user-age-dorukyum-thinking.json";
-import UserAgeDorukyumResponsePayload from "../../../payloads/interactions/index/user-age-dorukyum-response.json";
-import ButtonsExamplePayload from "../../../payloads/interactions/index/buttons-example.json";
-import SelectMenuExamplePayload from "../../../payloads/interactions/index/select-menu-example.json";
-import ModalButtonPayload from "../../../payloads/interactions/index/modal-button.json";
-import { emojiToTwemoji } from "../../../utils/emoji";
+import PingResponsePayload from "$payloads/interactions/index/ping-response.json";
+import ReverseMessageUserMsgPayload from "$payloads/interactions/index/reverse-message-user-msg.json";
+import ReverseMessageResponsePayload from "$payloads/interactions/index/reverse-message-response.json";
+import UserAgeDorukyumMsgPayload from "$payloads/interactions/index/user-age-dorukyum-msg.json";
+import UserAgeBobResponsePayload from "$payloads/interactions/index/user-age-bob-response.json";
+import UserAgeDorukyumThinkingPayload from "$payloads/interactions/index/user-age-dorukyum-thinking.json";
+import UserAgeDorukyumResponsePayload from "$payloads/interactions/index/user-age-dorukyum-response.json";
+import ButtonsExamplePayload from "$payloads/interactions/index/buttons-example.json";
+import SelectMenuExamplePayload from "$payloads/interactions/index/select-menu-example.json";
+import ModalButtonPayload from "$payloads/interactions/index/modal-button.json";
 
 In December 2020, Discord released their first Interaction: the [Slash Command](https://discord.com/developers/docs/interactions/application-commands#slash-commands). Since then, Discord has added many types of Interactions, including:
 

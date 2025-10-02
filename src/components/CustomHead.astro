@@ -59,8 +59,6 @@ const ogImageURL = new URL("/logo.webp", Astro.site);
 </script>
 
 <script>
-    import "@skyra/discord-components-core";
-
     function syncDiscordTheme() {
         const isLightTheme = document.documentElement.getAttribute("data-theme") === "light";
         const discordMessages = document.querySelectorAll("discord-messages");

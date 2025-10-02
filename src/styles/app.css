@@ -110,9 +110,9 @@
         margin-top: 0;
     }
 
-    .wb-msg-c-md-text-wb {
+    .wb-msg-c-md-text-wb,
+    .wb-msg-c-md-inline-code-wb {
         /* Fix text alignment inside messages */
-        text-align: left !important;
         vertical-align: top !important;
     }
 

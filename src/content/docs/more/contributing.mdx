@@ -1,28 +1,107 @@
 ---
-title: Contributing to the Guide
-description: Learn how to contribute to the Pycord Guide.
+title: Contributing to Pycord
+description: Learn how to contribute to Pycord - code, documentation, and community.
 ---
 
 import { Aside, Steps, TabItem, Tabs } from "@astrojs/starlight/components";
-import DiscordComponent from "../../../components/DiscordComponent.astro";
 import NewDiscordComponent from "../../../components/NewDiscordComponent.astro";
-import { emojiToTwemoji } from "../../../utils/emoji";
-import DorukyumHelloPayload from "@payloads/more/contributing/dorukyum-hello-user-msg.json";
-import UpdateSlashResponsePayload from "@payloads/more/contributing/update-slash-response.json";
-import WorkButtonsResponsePayload from "@payloads/more/contributing/work-buttons-response.json";
+import PaillatExamplePayload from "$payloads/more/contributing/paillat-example-msg.json";
 
-This page outlines some of the basic syntax you need to know to contribute to the guide. We recommend you also check out:
+First off, thanks for taking the time to contribute! It makes Pycord substantially better. 👍
 
-- [Starlight's Docs](https://starlight.astro.build/)
-- [Contributing Rules](https://github.com/Pycord-Development/guide/blob/main/CONTRIBUTING.md)
+There are several ways to contribute to Pycord:
 
-## Info
+- **Code Contributions**: Submit bug fixes, new features, or improvements to the library
+- **Documentation**: Help improve the guide, API documentation, or code comments
+- **Community Support**: Help others on our [Discord server](https://pycord.dev/discord)
+- **Bug Reports**: Report issues you encounter
+
+## Getting Help
+
+Before opening an issue, please check these resources:
+
+- [Official Discord Server](https://pycord.dev/discord) - Get real-time support
+- [Pycord Guide](/introduction/) - Comprehensive documentation
+- [Stack Overflow](https://stackoverflow.com/questions/tagged/pycord) - Use the `pycord` tag
+- [Existing GitHub Issues](https://github.com/Pycord-Development/pycord/issues) - Search for similar problems
+
+<Aside type="caution">Please **do not** use the GitHub issue tracker for support questions. Use the Discord server or Stack Overflow instead.</Aside>
+
+## Contributing to the Library
+
+For detailed guidelines on contributing to the Pycord library, visit the [official contributing guide](https://github.com/Pycord-Development/pycord/blob/master/CONTRIBUTING.md).
+
+### Reporting Bugs
+
+When reporting bugs, please include:
+
+1. **Summary**: Clear description of the bug
+2. **Reproduction Steps**: Minimal code that reproduces the issue
+3. **Expected Behavior**: What you expected to happen
+4. **Actual Behavior**: What actually happened
+5. **Environment Details**:
+    - Pycord version (`discord.__version__`)
+    - Python version
+    - Operating system
+    - Installation method (pip, git, etc.)
+6. **Traceback**: Complete error traceback if applicable
+
+<Aside type="tip">Search for existing issues before creating a new one to avoid duplicates!</Aside>
+
+### Pull Requests
+
+When submitting pull requests:
+
+1. **Focus**: Each PR should address a single aspect
+2. **Code Style**: Follow PEP-8 guidelines with 120-character line limit
+3. **Type Hints**: Use type hints wherever possible
+4. **Commit Style**: Use [Conventional Commits](https://www.conventionalcommits.org/) or [Gitmoji](https://gitmoji.dev/)
+5. **Testing**: Ensure your changes don't break existing functionality
+
+**Licensing Note**: By submitting a pull request, you agree that you hold the copyright to your code and agree to transfer the rights to the repository owner.
+
+## Community Participation
+
+One of the best ways to contribute is by helping others in the community!
+
+### Join Our Discord
+
+Join our [official Discord server](https://pycord.dev/discord) to:
+
+- Get help with your bot development
+- Help answer questions from other developers
+- Share your projects and creations
+- Participate in discussions about Pycord's future
+- Report bugs or suggest features informally
+
+### Stack Overflow
+
+Answer questions tagged with [`pycord`](https://stackoverflow.com/questions/tagged/pycord) on Stack Overflow to help the broader community.
+
+## Contributing to the Guide
+
+This guide is built with [Starlight](https://starlight.astro.build/) (powered by Astro). You can contribute by:
+
+- Fixing typos or improving explanations
+- Adding new examples or tutorials
+- Updating outdated information
+- Improving code samples
+
+**Resources:**
+
+- [Guide Repository](https://github.com/Pycord-Development/guide)
+- [Guide Contributing Rules](https://github.com/Pycord-Development/guide/blob/main/CONTRIBUTING.md)
+- [Starlight Documentation](https://starlight.astro.build/)
+
+### Guide Structure and Setup
+
+#### Info
 
 We use [Starlight](https://starlight.astro.build/) (built on Astro) to generate our guide. All the guide pages are generated
 from `mdx` files in the `src/content/docs/` directory.
 MDX allows you to use JSX in your markdown content.
 
-## Structure
+#### File Structure
 
 Let's visit the `src/content/docs/` directory and check its file structure.
 
@@ -39,7 +118,7 @@ Most pages have this at the top. The `title` defaults to the file name. Since th
 
 The `description` field is also important. This is the text shown in an embed when the page's link is shared on Discord, Twitter or other websites that support embedded links. Make sure to give a nice an interesting description!
 
-## Markdown Syntax
+#### Markdown Syntax
 
 This page quickly outlines some of the syntax that is used in markdown.
 
@@ -107,7 +186,7 @@ We can use emojis too! :joy:
 - [ ] That's not done yet
 ````
 
-## Asides (Admonitions)
+#### Asides (Admonitions)
 
 We can add warnings, notes, etc. with the following syntax:
 
@@ -125,10 +204,12 @@ We can add warnings, notes, etc. with the following syntax:
 </Aside>
 ```
 
-## Discord Message Components
+#### Discord Message Components
 
-<Aside type="caution" title="Importing Components">
-    Always import components using relative paths, as shown in the examples below.
+<Aside type="note" title="Import paths">
+    We use Astro path aliases. Do not use deep relative paths for components, images, or payloads. The configured aliases are:
+    <code>"$images/*": ["./src/images/*"]</code>,<code>"$components/*": ["./src/components/*"]</code>,<code>"$payloads/*": ["./src/payloads/*"]</code>
+    .
 </Aside>
 
 Most files already have the import for the Discord component wrapper.
@@ -136,201 +217,35 @@ Most files already have the import for the Discord component wrapper.
 First, import the necessary component:
 
 ```mdx
-import DiscordComponent from "../../../components/DiscordComponent.astro";
+import NewDiscordComponent from "$components/NewDiscordComponent.astro";
 
 ;
 ```
 
-The component starts like so:
-
-```mdx
-<DiscordComponent>
-
-</DiscordComponent>
-```
-
-This is where you list a `discord-message`.
-
-```mdx
-<DiscordComponent>
-    <discord-message profile="dorukyum">Hello!</discord-message>
-</DiscordComponent>
-```
-
-<NewDiscordComponent messages={[DorukyumHelloPayload]} />
-
-<br />
-
-It has a pretty straightforward syntax.
-
-<Aside type="tip">
-    Add a `<br />` to the end of a component to make the content below it look better.
-</Aside>
-
-### Slash Commands
-
-To make a message authored by a slash command, do the following:
-
-```mdx
-<DiscordComponent>
-    <discord-message profile="robocord">
-        <discord-command slot="reply" profile="bob" command="/update"></discord-command>
-        Updated dependencies to the latest version!
-    </discord-message>
-</DiscordComponent>
-```
-
-<NewDiscordComponent messages={[UpdateSlashResponsePayload]} />
-
-### Buttons
-
-To make a message with buttons, do the following:
-
-```mdx
-<DiscordComponent>
-    <discord-message profile="robocord">
-        <discord-command slot="reply" profile="bob" command="/work"></discord-command>
-        Work Done!
-        <discord-attachments slot="components">
-            <discord-action-row>
-                <discord-button type="primary" emoji={emojiToTwemoji("📝")}>
-                    Work More
-                </discord-button>
-                <discord-button type="secondary" emoji={emojiToTwemoji("💤")}>
-                    Sleep
-                </discord-button>
-            </discord-action-row>
-        </discord-attachments>
-    </discord-message>
-</DiscordComponent>
-```
-
-<NewDiscordComponent messages={[WorkButtonsResponsePayload]} />
-
-### Using Emojis
-
-Discord components require emoji URLs rather than Unicode characters. Use the `emojiToTwemoji()` function to convert emojis:
-Common emojis you might use:
-
-```ts
-import { emojiToTwemoji } from "../../../utils/emoji";
-
-emojiToTwemoji("📝"); // Pencil
-emojiToTwemoji("💤"); // Sleep
-emojiToTwemoji("✅"); // Check mark
-emojiToTwemoji("❌"); // Cross mark
-emojiToTwemoji("🚀"); // Rocket
-emojiToTwemoji("⚠️"); // Warning
-```
-
-Just pass any Unicode emoji directly to the function and it will convert it to a Twemoji CDN URL.
-
-### Making Profiles
-
-Discord message components require profiles to display user information. All profiles are configured in the `CustomHead.astro` component file.
-
-#### Understanding the Profile Structure
-
-Profiles are defined in the `globalThis.$discordMessage.profiles` object. Each profile contains the following properties:
-
-```js
-profiles: {
-    username: {
-        author: "Display Name",      // The name shown in Discord
-        avatar: "/avatar/file.webp", // Path to avatar image (in public/avatar/)
-        roleColor: "#hexcolor",      // Role color (hex format)
-        bot: true,                   // Optional: marks as bot account
-        verified: true,              // Optional: shows verified checkmark
-    },
-}
-```
-
-#### Adding a New Profile
+Under the hood, `NewDiscordComponent` uses the [Widgetbot message renderer](https://github.com/widgetbot-io/message-renderer/).
+This means that it works by displaying actual Discord messages payloads.
 
 <Steps>
 
-1. **Add Your Avatar Image**
+    1. Create a Discord message payload.
+       Add one or more message payloads in the `src/payloads/` directory. Choose or create an appropriate subdirectory and file name depending on what part of the guide you are working on.
 
-    Place your avatar image in the `public/avatar/` directory. Use `.webp` format for optimal performance.
+    2. Import the message payload in the page you want to display it in, like so:
+       ```mdx
+        import DorukyumHelloPayload from "$payloads/more/contributing/dorukyum-hello-user-msg.json";
+       ```
 
-    ```bash
-    public/avatar/yourname.webp
-    ```
-
-2. **Register the Profile**
-
-    Open `src/components/CustomHead.astro` and add your profile to the `profiles` object:
-
-    ```js
-    <script is:inline>
-        globalThis.$discordMessage = {
-            profiles: {
-                bob: {
-                    author: "BobDotCom",
-                    avatar: "/avatar/bob.webp",
-                    roleColor: "#2cd6f7",
-                },
-                robocord: {
-                    author: "Robocord",
-                    avatar: "/avatar/robocord.webp",
-                    roleColor: "#9b59b6",
-                    bot: true,
-                    verified: true,
-                },
-                // Add your profile here
-                yourname: {
-                    author: "Your Display Name",
-                    avatar: "/avatar/yourname.webp",
-                    roleColor: "#ff6b6b",
-                },
-            },
-        };
-    </script>
-    ```
-
-3. **Use Your Profile**
-
-    Reference your profile in any Discord message component:
-
-    ```mdx
-    <DiscordComponent>
-        <discord-message profile="yourname">Hello! This is my message.</discord-message>
-    </DiscordComponent>
-    ```
+    3. Use the `NewDiscordComponent` component to render the message(s):
+       ```mdx
+        <NewDiscordComponent messages={[DorukyumHelloPayload]} />
+       ```
+       The `messages` prop takes either an array of message payloads or an array of arrays of message payloads to display in groups.
 
 </Steps>
 
-<Aside type="note" title="Profile Documentation">
-    Please refer to the [Discord Component Documentation](https://discord-components.js.org/) for more details on available properties and
-    customization options.
-</Aside>
+This is what the above example message would look like:
 
-#### Example: Creating a Bot Profile
-
-```js
-mybot: {
-    author: "AwesomeBot",
-    avatar: "/avatar/mybot.webp",
-    roleColor: "#5865f2",  // Discord blurple
-    bot: true,
-    verified: true,
-}
-```
-
-Then use it in your documentation:
-
-```mdx
-<DiscordComponent>
-    <discord-message profile="mybot">
-        <discord-command slot="reply" profile="bob" command="/hello"></discord-command>
-        Hello! I'm a verified bot 🤖
-    </discord-message>
-</DiscordComponent>
-```
-
-<Aside type="tip" title="Profile Reusability">
-    Once a profile is added to `CustomHead.astro`, it becomes available across all documentation pages. You don't need to re-import or redefine it!
-</Aside>
+<NewDiscordComponent messages={[PaillatExamplePayload]} />
 
 ## Page Format
 

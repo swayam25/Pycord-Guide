@@ -134,8 +134,5 @@ export default defineConfig({
     ],
     vite: {
         plugins: [tailwindcss()],
-        ssr: {
-            noExternal: ["@skyra/discord-components-core"],
-        },
     },
 });
