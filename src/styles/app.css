@@ -81,9 +81,6 @@
     }
 }
 @layer discord-components {
-    .discord-messages-container {
-        @apply bg-discord-bg;
-    }
     .discord-messages {
         all: initial;
         font-family: "Whitney", sans-serif;
