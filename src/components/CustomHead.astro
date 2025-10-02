@@ -1,0 +1,89 @@
+---
+import StarlightHead from "@astrojs/starlight/components/Head.astro";
+
+const { entry } = Astro.props;
+const title = entry?.data?.title || "Pycord Guide";
+const description =
+    entry?.data?.description || "The comprehensive guide for building Discord bots with Pycord - the modern Python Discord API wrapper.";
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImageURL = new URL("/logo.webp", Astro.site);
+---
+
+<StarlightHead {...Astro.props} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImageURL} />
+<meta property="og:image:alt" content="Pycord Logo" />
+<meta property="og:site_name" content="Pycord Guide" />
+<meta property="og:locale" content="en_US" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={canonicalURL} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImageURL} />
+<meta name="twitter:image:alt" content="Pycord Logo" />
+
+<!-- Additional SEO Meta Tags -->
+<meta name="author" content="Pycord Development" />
+<meta name="theme-color" content="#5865f2" />
+<link rel="canonical" href={canonicalURL} />
+
+<script is:inline>
+    globalThis.$discordMessage = {
+        profiles: {
+            bob: {
+                author: "BobDotCom",
+                avatar: "/avatar/bob.webp",
+                roleColor: "#2cd6f7",
+            },
+            robocord: {
+                author: "Robocord",
+                avatar: "/avatar/robocord.webp",
+                roleColor: "#9b59b6",
+                bot: true,
+                verified: true,
+            },
+            dorukyum: {
+                author: "Dorukyum",
+                avatar: "/avatar/dorukyum.webp",
+                roleColor: "#2cd6f7",
+            },
+        },
+    };
+</script>
+
+<script>
+    import "@skyra/discord-components-core";
+
+    function syncDiscordTheme() {
+        const isLightTheme = document.documentElement.getAttribute("data-theme") === "light";
+        const discordMessages = document.querySelectorAll("discord-messages");
+
+        discordMessages.forEach((msg) => {
+            if (isLightTheme) {
+                msg.setAttribute("light-theme", "");
+            } else {
+                msg.removeAttribute("light-theme");
+            }
+        });
+    }
+    syncDiscordTheme();
+    const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            if (mutation.type === "attributes" && mutation.attributeName === "data-theme") {
+                syncDiscordTheme();
+            }
+        });
+    });
+    observer.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ["data-theme"],
+    });
+    document.addEventListener("astro:after-swap", syncDiscordTheme);
+</script>

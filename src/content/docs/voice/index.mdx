@@ -1,0 +1,25 @@
+---
+title: Voice
+description: Guide for voice features in Pycord
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+Welcome to the guide for voice features in Pycord.
+
+<Aside type="caution">This guide requires previous experience with Pycord and Python.</Aside>
+
+## Requirements
+
+The only requirement which is required for voice features is [`PyNaCl`](https://pypi.org/project/PyNaCl/).
+The following features are optional:
+
+<Aside type="tip">
+    Opus is also a required library, but this comes with Pycord. Some hosts may not come with it, though, so remember to always check if required
+    dependencies are installed.
+</Aside>
+
+- [`FFmpeg`](https://ffmpeg.org) - used for sending/receiving files other than `.pcm` and `.wav`
+- [`Pycord.Wavelink`](https://github.com/Pycord-Development/Pycord.Wavelink),
+  [`Lavalink.py`](https://github.com/Devoxin/Lavalink.py),
+  [`Wavelink`](https://github.com/PythonistaGuild/Wavelink) or any other Python LavaLink library for music playback.

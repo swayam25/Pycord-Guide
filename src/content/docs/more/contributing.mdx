@@ -1,0 +1,417 @@
+---
+title: Contributing to the Guide
+description: Learn how to contribute to the Pycord Guide.
+---
+
+import { Aside, Steps, TabItem, Tabs } from "@astrojs/starlight/components";
+import DiscordComponent from "../../../components/DiscordComponent.astro";
+import { emojiToTwemoji } from "../../../utils/emoji";
+
+This page outlines some of the basic syntax you need to know to contribute to the guide. We recommend you also check out:
+
+- [Starlight's Docs](https://starlight.astro.build/)
+- [Contributing Rules](https://github.com/Pycord-Development/guide/blob/main/CONTRIBUTING.md)
+
+## Info
+
+We use [Starlight](https://starlight.astro.build/) (built on Astro) to generate our guide. All the guide pages are generated
+from `mdx` files in the `src/content/docs/` directory.
+MDX allows you to use JSX in your markdown content.
+
+## Structure
+
+Let's visit the `src/content/docs/` directory and check its file structure.
+
+We can see various folders and a few files in it. Let's talk a bit about the `introduction.mdx` file. At the top, you can see something like:
+
+```md
+---
+title: Introduction
+description: ...
+---
+```
+
+Most pages have this at the top. The `title` defaults to the file name. Since the titles need to be Capitalized according to need while the file names are lowercased (sometimes, the file names are shorter than the title!), we set a title ourselves.
+
+The `description` field is also important. This is the text shown in an embed when the page's link is shared on Discord, Twitter or other websites that support embedded links. Make sure to give a nice an interesting description!
+
+## Markdown Syntax
+
+This page quickly outlines some of the syntax that is used in markdown.
+
+````mdx
+Markdown syntax is pretty easy. You can add **bold**, _italic_ and _underline_ text. You can use ~~strikethrough~~. You can use `inline code blocks`.
+
+    ```py
+    print("We can use code blocks like this.")
+    ```
+
+You can add [links to other websites](https://pycord.dev). You can add images like this: ![alternate text that describes the image](https://pycord.dev/image.png).
+
+- You can create
+- unordered lists like this
+
+1. Or ordered lists
+2. Like this
+
+3. If you want markdown to automatically detect what number you are on, you can use `1.`
+4. Like this
+
+# Headers
+
+## Go
+
+### Like
+
+#### This
+
+You can even use HTML in Markdown.
+
+<samp>This text is monospaced</samp>
+Use <br /> to add a break line.
+
+> We can use blockquotes too.
+
+2 ways to create tables:
+
+<table>
+    <tr>
+        <th>Header</th>
+        <th>Header</th>
+    </tr>
+    <tr>
+        <td>Cell</td>
+        <td>Cell</td>
+    </tr>
+</table>
+
+| Header | Header |
+| ------ | ------ |
+| Cell   | Cell   |
+
+Here's a line for us to start with.
+
+This line is separated from the one above by two new lines, so it will be a _separate paragraph_.
+
+This line is also a separate paragraph, but...
+This line is only separated by a single newline, so it's a separate line in the _same paragraph_.
+
+We can use emojis too! :joy:
+
+- [x] We can have task lists too
+- [ ] This is a task
+- [ ] That's not done yet
+````
+
+## Asides (Admonitions)
+
+We can add warnings, notes, etc. with the following syntax:
+
+```mdx
+<Aside type="note">Some **content** with _markdown_ `syntax`.</Aside>
+
+<Aside type="tip">Some **content** with _markdown_ `syntax`.</Aside>
+
+<Aside type="caution">Some **content** with _markdown_ `syntax`.</Aside>
+
+<Aside type="danger">Some **content** with _markdown_ `syntax`.</Aside>
+
+<Aside type="tip" title="Cool Stuff">
+    You can edit an aside's title by adding a title attribute!
+</Aside>
+```
+
+## Discord Message Components
+
+<Aside type="caution" title="Importing Components">
+    Always import components using relative paths, as shown in the examples below.
+</Aside>
+
+Most files already have the import for the Discord component wrapper.
+
+First, import the necessary component:
+
+```mdx
+import DiscordComponent from "../../../components/DiscordComponent.astro";
+```
+
+The component starts like so:
+
+```mdx
+<DiscordComponent>
+
+</DiscordComponent>
+```
+
+This is where you list a `discord-message`.
+
+```mdx
+<DiscordComponent>
+    <discord-message profile="dorukyum">Hello!</discord-message>
+</DiscordComponent>
+```
+
+<DiscordComponent>
+    <discord-message profile="dorukyum">Hello!</discord-message>
+</DiscordComponent>
+
+<br />
+
+It has a pretty straightforward syntax.
+
+<Aside type="tip">
+    Add a `<br />` to the end of a component to make the content below it look better.
+</Aside>
+
+### Slash Commands
+
+To make a message authored by a slash command, do the following:
+
+```mdx
+<DiscordComponent>
+    <discord-message profile="robocord">
+        <discord-command slot="reply" profile="bob" command="/update"></discord-command>
+        Updated dependencies to the latest version!
+    </discord-message>
+</DiscordComponent>
+```
+
+<DiscordComponent>
+    <discord-message profile="robocord">
+        <discord-command slot="reply" profile="bob" command="/update"></discord-command>
+        Updated dependencies to the latest version!
+    </discord-message>
+</DiscordComponent>
+
+### Buttons
+
+To make a message with buttons, do the following:
+
+```mdx
+<DiscordComponent>
+    <discord-message profile="robocord">
+        <discord-command slot="reply" profile="bob" command="/work"></discord-command>
+        Work Done!
+        <discord-attachments slot="components">
+            <discord-action-row>
+                <discord-button type="primary" emoji={emojiToTwemoji("📝")}>
+                    Work More
+                </discord-button>
+                <discord-button type="secondary" emoji={emojiToTwemoji("💤")}>
+                    Sleep
+                </discord-button>
+            </discord-action-row>
+        </discord-attachments>
+    </discord-message>
+</DiscordComponent>
+```
+
+<DiscordComponent>
+    <discord-message profile="robocord">
+        <discord-command slot="reply" profile="bob" command="/work"></discord-command>
+        Work Done!
+        <discord-attachments slot="components">
+            <discord-action-row>
+                <discord-button type="primary" emoji={emojiToTwemoji("📝")}>
+                    Work More
+                </discord-button>
+                <discord-button type="secondary" emoji={emojiToTwemoji("💤")}>
+                    Sleep
+                </discord-button>
+            </discord-action-row>
+        </discord-attachments>
+    </discord-message>
+</DiscordComponent>
+
+### Using Emojis
+
+Discord components require emoji URLs rather than Unicode characters. Use the `emojiToTwemoji()` function to convert emojis:
+Common emojis you might use:
+
+```ts
+import { emojiToTwemoji } from "../../../utils/emoji";
+
+emojiToTwemoji("📝"); // Pencil
+emojiToTwemoji("💤"); // Sleep
+emojiToTwemoji("✅"); // Check mark
+emojiToTwemoji("❌"); // Cross mark
+emojiToTwemoji("🚀"); // Rocket
+emojiToTwemoji("⚠️"); // Warning
+```
+
+Just pass any Unicode emoji directly to the function and it will convert it to a Twemoji CDN URL.
+
+### Making Profiles
+
+Discord message components require profiles to display user information. All profiles are configured in the `CustomHead.astro` component file.
+
+#### Understanding the Profile Structure
+
+Profiles are defined in the `globalThis.$discordMessage.profiles` object. Each profile contains the following properties:
+
+```js
+profiles: {
+    username: {
+        author: "Display Name",      // The name shown in Discord
+        avatar: "/avatar/file.webp", // Path to avatar image (in public/avatar/)
+        roleColor: "#hexcolor",      // Role color (hex format)
+        bot: true,                   // Optional: marks as bot account
+        verified: true,              // Optional: shows verified checkmark
+    },
+}
+```
+
+#### Adding a New Profile
+
+<Steps>
+
+1. **Add Your Avatar Image**
+
+    Place your avatar image in the `public/avatar/` directory. Use `.webp` format for optimal performance.
+
+    ```bash
+    public/avatar/yourname.webp
+    ```
+
+2. **Register the Profile**
+
+    Open `src/components/CustomHead.astro` and add your profile to the `profiles` object:
+
+    ```js
+    <script is:inline>
+        globalThis.$discordMessage = {
+            profiles: {
+                bob: {
+                    author: "BobDotCom",
+                    avatar: "/avatar/bob.webp",
+                    roleColor: "#2cd6f7",
+                },
+                robocord: {
+                    author: "Robocord",
+                    avatar: "/avatar/robocord.webp",
+                    roleColor: "#9b59b6",
+                    bot: true,
+                    verified: true,
+                },
+                // Add your profile here
+                yourname: {
+                    author: "Your Display Name",
+                    avatar: "/avatar/yourname.webp",
+                    roleColor: "#ff6b6b",
+                },
+            },
+        };
+    </script>
+    ```
+
+3. **Use Your Profile**
+
+    Reference your profile in any Discord message component:
+
+    ```mdx
+    <DiscordComponent>
+        <discord-message profile="yourname">Hello! This is my message.</discord-message>
+    </DiscordComponent>
+    ```
+
+</Steps>
+
+<Aside type="note" title="Profile Documentation">
+    Please refer to the [Discord Component Documentation](https://discord-components.js.org/) for more details on available properties and
+    customization options.
+</Aside>
+
+#### Example: Creating a Bot Profile
+
+```js
+mybot: {
+    author: "AwesomeBot",
+    avatar: "/avatar/mybot.webp",
+    roleColor: "#5865f2",  // Discord blurple
+    bot: true,
+    verified: true,
+}
+```
+
+Then use it in your documentation:
+
+```mdx
+<DiscordComponent>
+    <discord-message profile="mybot">
+        <discord-command slot="reply" profile="bob" command="/hello"></discord-command>
+        Hello! I'm a verified bot 🤖
+    </discord-message>
+</DiscordComponent>
+```
+
+<Aside type="tip" title="Profile Reusability">
+    Once a profile is added to `CustomHead.astro`, it becomes available across all documentation pages. You don't need to re-import or redefine it!
+</Aside>
+
+## Page Format
+
+There are a few things you need to take care of:
+
+1. Make sure that the spelling and grammar is perfect. We have a GitHub action configured that will warn you about spelling errors when you start a pull request. Make sure to commit your changes accordingly.
+
+    As for the grammar, you should try reading the changes you have done and wait for reviews from others.
+
+2. A common mistake people make is incorrect header style. People often think that the less the important the topic is, the lower it's heading style should be.
+
+    ```md
+    [PAGE STARTS]
+
+    # Topic
+
+    ## Less Important Topic
+
+    ## Subtopic
+    ```
+
+    ```md
+    [PAGE STARTS]
+
+    # About
+
+    [Introduction]
+
+    ## Installation
+
+    [Content]
+
+    ### Windows
+
+    [Content]
+    ```
+
+    That's VERY wrong. Here's the correct example:
+
+    ```md
+    [PAGE STARTS]
+    [Introduction]
+
+    ## Topic
+
+    ## Less Important Topic
+
+    ### Subtopic
+    ```
+
+    ```md
+    [PAGE STARTS]
+    [Introduction]
+
+    ## About
+
+    [More Information]
+
+    ## Installation
+
+    [Content]
+
+    ### Windows
+
+    [Content]
+    ```
+
+    Note that the `---`s at the beginning have been skipped here.

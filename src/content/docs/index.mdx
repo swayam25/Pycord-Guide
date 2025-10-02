@@ -1,0 +1,156 @@
+---
+title: Welcome to Pycord
+description: The modern, easy to use, feature-rich, and async-ready Python library for Discord bots
+template: splash
+hero:
+    tagline: Build powerful Discord bots with ease using Python's most intuitive Discord API wrapper
+    image:
+        file: ../../../public/logo.webp
+    actions:
+        - text: Get Started
+          link: /introduction/
+          icon: right-arrow
+          variant: primary
+        - text: View on GitHub
+          link: https://github.com/Pycord-Development/pycord
+          icon: external
+          variant: minimal
+---
+
+import { Card, CardGrid, Icon } from "@astrojs/starlight/components";
+
+## Why Choose Pycord?
+
+<CardGrid stagger>
+  <Card title="Modern & Async" icon="rocket">
+    Built from the ground up with modern Python async/await syntax. Write clean, efficient code that scales.
+  </Card>
+
+<Card title="Feature-Rich" icon="star">
+    Full support for slash commands, buttons, select menus, modals, voice, and all the latest Discord features.
+</Card>
+
+<Card title="Well Documented" icon="open-book">
+    Comprehensive guides, API reference, and examples to get you started quickly and keep you building.
+</Card>
+
+<Card title="Easy to Use" icon="approve-check">
+    Intuitive API design that feels natural. From beginners to experts, everyone can build amazing bots.
+</Card>
+
+<Card title="Extensible" icon="puzzle">
+    Powerful extensions system with cogs, tasks, pages, and bridge commands. Organize your code beautifully.
+</Card>
+
+  <Card title="Active Community" icon="discord">
+    Join thousands of developers in our Discord server. Get help, share projects, and contribute to the future.
+  </Card>
+</CardGrid>
+
+## Quick Start
+
+Get your first bot running in minutes:
+
+```py
+import discord
+
+bot = discord.Bot()
+
+@bot.slash_command(description="Say hello!")
+async def hello(ctx):
+    await ctx.respond("Hello from Pycord! 👋")
+
+bot.run("YOUR_TOKEN_HERE")
+```
+
+Just **three simple steps**:
+
+1. Install Pycord: `pip install py-cord`
+2. Create your bot on the [Discord Developer Portal](https://discord.com/developers/applications)
+3. Copy the code above, add your token, and run!
+
+**[Read the full tutorial →](/getting-started/creating-your-first-bot/)**
+
+## What Can You Build?
+
+<CardGrid stagger>
+  <Card title="Interactive Slash Commands" icon="seti:todo">
+    Create modern slash commands with autocomplete, options, and beautiful interactions that users love.
+
+    **[Learn More →](/interactions/application-commands/slash-commands/)**
+
+  </Card>
+
+  <Card title="Engaging UI Components" icon="seti:html">
+    Add buttons, dropdowns, and modals to create rich, interactive experiences without users typing.
+
+    **[Learn More →](/interactions/ui-components/buttons/)**
+
+  </Card>
+
+  <Card title="Voice & Audio" icon="seti:audio">
+    Stream music, record voice, and create amazing audio experiences with Wavelink integration.
+
+    **[Learn More →](/voice/)**
+
+  </Card>
+
+  <Card title="Powerful Extensions" icon="seti:pipeline">
+    Organize complex bots with cogs, run background tasks, create paginated embeds, and more.
+
+    **[Learn More →](/extensions/bridge/)**
+
+  </Card>
+</CardGrid>
+
+## Trusted by Thousands
+
+Pycord powers bots in **millions of Discord servers** worldwide, from small community helpers to massive production bots serving millions of users.
+
+<Card title="Production Ready" icon="approve-check-circle">
+
+- **Type-safe** with full type hints support
+- **Battle-tested** by thousands of developers
+- **Actively maintained** with regular updates
+- **High performance** async architecture
+- **Localization** support for global audiences
+- **Flexible** enough for any bot project
+
+</Card>
+
+## Join the Community
+
+<CardGrid>
+  <Card title="Discord Server" icon="discord">
+    Get help, share your projects, and chat with other developers.
+
+    **[Join Now →](https://discord.gg/pycord)**
+
+  </Card>
+
+  <Card title="GitHub" icon="github">
+    Star the project, report issues, or contribute code.
+
+    **[View Repository →](https://github.com/Pycord-Development/pycord)**
+
+  </Card>
+
+  <Card title="Contributing" icon="heart">
+    Help improve Pycord for everyone. All contributions welcome!
+
+    **[Learn How →](/more/contributing/)**
+
+  </Card>
+</CardGrid>
+
+---
+
+<div style="text-align: center; margin-top: 3rem; padding: 2rem; background: var(--sl-color-bg-nav); border-radius: 0.5rem;">
+
+### Ready to Build Something Amazing?
+
+From simple utility bots to complex multi-server platforms, Pycord gives you the tools to bring your ideas to life.
+
+**[Start Building Now →](/getting-started/creating-your-first-bot/)**
+
+</div>

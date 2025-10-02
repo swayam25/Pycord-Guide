@@ -1,0 +1,136 @@
+@layer base, starlight, theme, components, utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Saira:ital,wght@0,100..900;1,100..900&display=swap");
+@import "@astrojs/starlight-tailwind";
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+@theme {
+    --font-sans: "Saira";
+    --font-mono: "JetBrains Mono";
+
+    --color-blurple: #5865f2;
+    --color-light-blurple: #e0e3ff;
+    --color-grey: #2c2c30;
+    --color-dark-grey: #1f1f1f;
+    --color-discord-red: #d22d39;
+    --color-discord-green: #43a25a;
+
+    --color-accent-200: var(--color-blurple);
+    --color-accent-600: #2e36b9;
+    --color-accent-900: #232a66;
+    --color-accent-950: #1a2045;
+
+    --color-gray-100: #f6f6f6;
+    --color-gray-200: #eeeeee;
+    --color-gray-300: #c2c2c2;
+    --color-gray-400: #8b8b8b;
+    --color-gray-500: #585858;
+    --color-gray-700: var(--color-grey);
+    --color-gray-800: var(--color-dark-grey);
+    --color-gray-900: #17181a;
+}
+
+button,
+a {
+    border-radius: var(--radius-lg) !important;
+    @apply hover:brightness-90;
+    @apply transition-all duration-200;
+}
+
+img {
+    border-radius: var(--radius-lg) !important;
+}
+
+@layer components {
+    .blurple-btn {
+        background-color: var(--color-blurple) !important;
+        padding: 0.5rem 1rem !important;
+    }
+    .grey-btn {
+        background-color: var(--color-grey) !important;
+        padding: 0.5rem 1rem !important;
+    }
+    .red-btn {
+        background-color: var(--color-discord-red) !important;
+        padding: 0.5rem 1rem !important;
+    }
+    .green-btn {
+        background-color: var(--color-discord-green) !important;
+        padding: 0.5rem 1rem !important;
+    }
+}
+
+.site-title {
+    background: linear-gradient(
+        45deg,
+        var(--color-blurple),
+        var(--color-blurple),
+        var(--color-light-blurple),
+        var(--color-blurple),
+        var(--color-blurple),
+        var(--color-light-blurple),
+        var(--color-blurple),
+        var(--color-blurple)
+    );
+    background-size: 200% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient 6s linear infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% center;
+    }
+    50% {
+        background-position: 100% center;
+    }
+    100% {
+        background-position: 200% center;
+    }
+}
+
+.starlight-aside {
+    border-radius: var(--radius-lg);
+}
+
+/* Discord Components */
+@font-face {
+    font-family: "Whitney";
+    src: url("https://cdn.skyra.pw/whitney-font/v2/Book.woff") format("woff");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Whitney";
+    src: url("https://cdn.skyra.pw/whitney-font/v2/Medium.woff") format("woff");
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: "Whitney";
+    src: url("https://cdn.skyra.pw/whitney-font/v2/Semibold.woff") format("woff");
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: "Whitney";
+    src: url("https://cdn.skyra.pw/whitney-font/v2/Bold.woff") format("woff");
+    font-weight: 700;
+}
+
+.title {
+    border-bottom: 1px solid #4a4a4a;
+    padding-bottom: 0.25em;
+}
+
+/* Essential Discord component styles */
+discord-messages {
+    border-radius: var(--radius-lg) !important;
+}
+
+discord-* {
+    font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+}
