@@ -36,6 +36,9 @@
     --color-gray-900: #17181a;
 
     --color-discord-bg: #323339;
+
+    --radius-mini: 0.125rem;
+
 }
 
 @layer components {
