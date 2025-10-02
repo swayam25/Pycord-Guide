@@ -216,10 +216,9 @@ Most files already have the import for the Discord component wrapper.
 
 First, import the necessary component:
 
+{/* prettier-ignore */}
 ```mdx
 import NewDiscordComponent from "$components/NewDiscordComponent.astro";
-
-;
 ```
 
 Under the hood, `NewDiscordComponent` uses the [Widgetbot message renderer](https://github.com/widgetbot-io/message-renderer/).
@@ -246,6 +245,22 @@ This means that it works by displaying actual Discord messages payloads.
 This is what the above example message would look like:
 
 <NewDiscordComponent messages={[PaillatExamplePayload]} />
+
+Here is a simple message command to easily obtain a message payload from Discord:
+
+````py
+import json
+import discord
+import os
+
+bot = discord.Bot()
+
+@bot.message_command(name="Get msg payload", contexts={discord.InteractionContextType.guild, discord.InteractionContextType.bot_dm, discord.InteractionContextType.private_channel}, integration_types={discord.IntegrationType.user_install, discord.IntegrationType.guild_install})
+async def msg_payload(ctx: discord.ApplicationContext, message: discord.Message):
+    await ctx.respond(f"Message payload: ```\n{json.dumps(message._raw_data)}\n```", ephemeral=True)
+
+bot.run(os.getenv("DISCORD_TOKEN"))
+````
 
 ## Page Format
 
