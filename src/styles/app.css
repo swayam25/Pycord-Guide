@@ -94,10 +94,6 @@
         vertical-align: initial !important;
     }
 
-    .wb-msg-c-mention-wb {
-        @apply p-8;
-    }
-
     .wb-msg-c-button-component-wb {
         /* Buttons */
         margin-top: 0;
