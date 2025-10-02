@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Saira:ital,wght@0,100..900;1,100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Geist:wght@100..900&family=Saira:ital,wght@0,100..900;1,100..900&display=swap');
 @import "@astrojs/starlight-tailwind";
 
 @import "tailwindcss/theme.css" layer(theme);
@@ -8,11 +8,12 @@
 @source "../components/**/*.{astro,html,js,jsx,ts,tsx,vue,svelte,md,mdx}";
 @source "../content/**/*.{astro,html,js,jsx,ts,tsx,vue,svelte,md,mdx}";
 
-@layer base, starlight, theme, components, utilities, discord-components;
+@layer base, starlight, theme, pycord, components, utilities, discord-components;
 
 @theme {
-    --font-sans: "Saira";
-    --font-mono: "JetBrains Mono";
+    --font-display: "Saira";
+    --font-sans: "Geist";
+    --font-mono: "Jetbrains Mono";
 
     --color-blurple: #5865f2;
     --color-light-blurple: #e0e3ff;
@@ -45,19 +46,25 @@
         background-color: var(--color-blurple) !important;
         padding: 0.5rem 1rem !important;
     }
+
     .grey-btn {
         background-color: var(--color-grey) !important;
         padding: 0.5rem 1rem !important;
     }
+
     .red-btn {
         background-color: var(--color-discord-red) !important;
         padding: 0.5rem 1rem !important;
     }
+
     .green-btn {
         background-color: var(--color-discord-green) !important;
         padding: 0.5rem 1rem !important;
     }
+}
 
+@layer pycord {
+    /* Pycord customizations */
     .site-title {
         background: linear-gradient(
             45deg,
@@ -81,7 +88,18 @@
         border-bottom: 1px solid #4a4a4a;
         padding-bottom: 0.25em;
     }
+
+    .sl-heading-wrapper {
+        h1, h2, h3, h4, h5, h6 {
+            @apply font-display;
+        }
+    }
+
+    [data-page-title] {
+        @apply font-display;
+    }
 }
+
 @layer discord-components {
     .discord-messages {
         all: initial;
