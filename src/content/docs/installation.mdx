@@ -18,9 +18,19 @@ Before you can start using Pycord, you need to install the library.
 
 To install Pycord, you can use the following command in your terminal:
 
-```bash
-pip install py-cord
-```
+{/* prettier-ignore */}
+<Tabs>
+    <TabItem label="pip">
+        ```bash
+        pip install py-cord
+        ```
+    </TabItem>
+    <TabItem label="uv">
+        ```bash
+        uv add py-cord
+        ```
+    </TabItem>
+</Tabs>
 
 <Aside type="tip">
     Remember that you need to install `py-cord`, not `pycord`. Also, the `pip` command varies depending on your installation. For example, it might be
@@ -29,9 +39,19 @@ pip install py-cord
 
 If you need voice support for your bot, you should run:
 
-```bash
-pip install "py-cord[voice]"
-```
+{/* prettier-ignore */}
+<Tabs>
+    <TabItem label="pip">
+        ```bash
+        pip install "py-cord[voice]"
+        ```
+    </TabItem>
+    <TabItem label="uv">
+        ```bash
+        uv add "py-cord[voice]"
+        ```
+    </TabItem>
+</Tabs>
 
 ## Migration
 
@@ -39,18 +59,28 @@ pip install "py-cord[voice]"
 
 If you are upgrading from a previous version of Pycord, you can use the following command in your terminal to upgrade to the latest version:
 
-```bash
-pip install -U py-cord
-```
+{/* prettier-ignore */}
+<Tabs>
+    <TabItem label="pip">
+        ```bash
+        pip install -U py-cord
+        ```
+    </TabItem>
+    <TabItem label="uv">
+        ```bash
+        uv update py-cord
+        ```
+    </TabItem>
+</Tabs>
 
 ### Migrating from other libraries
 
 If you are migrating from another library, say, `discord.py`, first of all, you need to uninstall it.
 
-```bash
-pip uninstall discord.py
-```
-
+<Tabs>
+    <TabItem label="pip">```bash pip uninstall discord.py ```</TabItem>
+    <TabItem label="uv">```bash uv remove discord.py ```</TabItem>
+</Tabs>
 Then, you can install Pycord, it's as simple as that!:
 
 ```bash
