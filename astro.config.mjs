@@ -20,7 +20,8 @@ export default defineConfig({
             },
             customCss: ["/src/styles/app.css"],
             components: {
-                Head: "./src/components/CustomHead.astro",
+                Head: "$components/CustomHead.astro",
+                Footer: "$components/CustomFooter.astro",
             },
             social: [
                 {
@@ -128,7 +129,9 @@ export default defineConfig({
                     ],
                 },
             ],
-        }),
+            lastUpdated: true,
+        }
+        ),
         svelte(),
         react(),
     ],
