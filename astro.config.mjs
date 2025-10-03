@@ -2,9 +2,10 @@
 import starlight from "@astrojs/starlight";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
+import starlightThemeNova from "starlight-theme-nova";
 
-import svelte from "@astrojs/svelte";
 import react from "@astrojs/react";
+import svelte from "@astrojs/svelte";
 
 // https://astro.build/config
 export default defineConfig({
@@ -128,6 +129,7 @@ export default defineConfig({
                     ],
                 },
             ],
+            plugins: [starlightThemeNova()],
         }),
         svelte(),
         react(),

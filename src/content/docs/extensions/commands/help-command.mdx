@@ -3,14 +3,14 @@ title: Help Command
 description: Learn how to create custom help commands for your Pycord bot
 ---
 
-import { Aside, TabItem, Tabs } from "@astrojs/starlight/components";
-import NewDiscordComponent from "$components/NewDiscordComponent.astro";
-import PrefixedHelpUserMsgPayload from "$payloads/extensions/commands/prefixed-help-user-msg.json";
+import DiscordComponent from "$components/DiscordComponent.astro";
 import PrefixedHelpDefaultResponse from "$payloads/extensions/commands/help-default-response.json";
-import PrefixedHelpMinimalResponse from "$payloads/extensions/commands/help-minimal-response.json";
-import PrefixedHelpMinimalEmbed from "$payloads/extensions/commands/help-minimal-embed.json";
 import PrefixedHelpErrorEmbed from "$payloads/extensions/commands/help-error-embed.json";
 import PrefixedHelpUserMsgErrorEmbed from "$payloads/extensions/commands/help-error-user-msg.json";
+import PrefixedHelpMinimalEmbed from "$payloads/extensions/commands/help-minimal-embed.json";
+import PrefixedHelpMinimalResponse from "$payloads/extensions/commands/help-minimal-response.json";
+import PrefixedHelpUserMsgPayload from "$payloads/extensions/commands/prefixed-help-user-msg.json";
+import { Aside, TabItem, Tabs } from "@astrojs/starlight/components";
 
 Pycord's `commands` extension comes with a built-in help command. In this guide, we will take a look at them as well as learn how to create your own. Let's dive in!
 
@@ -67,7 +67,7 @@ There are two types of built-in help commands:
     bot.run("token")
     ```
 
-      <NewDiscordComponent
+      <DiscordComponent
           messages={
               [
                   [PrefixedHelpUserMsgPayload],
@@ -91,7 +91,7 @@ There are two types of built-in help commands:
     ```
 
 
-      <NewDiscordComponent
+      <DiscordComponent
           messages={
               [
                   [PrefixedHelpUserMsgPayload],
@@ -138,7 +138,7 @@ in an embed, and then send the embed to the destination channel.
 
 Finally, we set this as our new help command using `bot.help_command = MyNewHelp()`.
 
-<NewDiscordComponent messages={[[PrefixedHelpUserMsgPayload], [PrefixedHelpMinimalEmbed]]} />
+<DiscordComponent messages={[[PrefixedHelpUserMsgPayload], [PrefixedHelpMinimalEmbed]]} />
 
 ## Creating Your Help Command
 
@@ -405,7 +405,7 @@ class MyHelp(commands.HelpCommand):
         await channel.send(embed=embed)
 ```
 
-<NewDiscordComponent messages={[[PrefixedHelpUserMsgErrorEmbed], [PrefixedHelpErrorEmbed]]} />
+<DiscordComponent messages={[[PrefixedHelpUserMsgErrorEmbed], [PrefixedHelpErrorEmbed]]} />
 
 ## Credits
 

@@ -3,10 +3,9 @@ title: Receiving Voice Samples
 description: Learn how to record audio from voice channels in Pycord
 ---
 
-import DiscordComponent from "../../../components/DiscordComponent.astro";
-import NewDiscordComponent from "../../../components/NewDiscordComponent.astro";
-import RecordResponsePayload from "$payloads/voice/receiving-record-response.json";
 import FinishedRecordingPayload from "$payloads/voice/receiving-finished-recording.json";
+import RecordResponsePayload from "$payloads/voice/receiving-record-response.json";
+import DiscordComponent from "../../../components/DiscordComponent.astro";
 
 Pycord tries to keep the recording of audio as simple and easy as possible, to keep making Discord
 bots of any kind easy for all audiences. This guide provides simple and easy examples of using the
@@ -46,7 +45,7 @@ async def record(ctx):  # If you're using commands.Bot, this will also work.
     await ctx.respond("Started recording!")
 ```
 
-<NewDiscordComponent messages={[RecordResponsePayload]} />
+<DiscordComponent messages={[RecordResponsePayload]} />
 
 <br />
 
@@ -71,7 +70,7 @@ async def once_done(sink: discord.sinks, channel: discord.TextChannel, *args):  
     await channel.send(f"finished recording audio for: {', '.join(recorded_users)}.", files=files)  # Send a message with the accumulated files.
 ```
 
-<NewDiscordComponent messages={[FinishedRecordingPayload]} />
+<DiscordComponent messages={[FinishedRecordingPayload]} />
 
 <br />
 

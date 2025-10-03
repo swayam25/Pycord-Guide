@@ -1,7 +1,7 @@
 {
     "id": "1234567890123456842",
     "type": 0,
-    "content": "No Category:\n  !help Shows this message\n  !ping\n  !announce\n\nType !help command for more info on a command.\nYou can also type !help category for more info on a category.",
+    "content": "```No Category:\n  !help Shows this message\n  !ping\n  !announce\n\nType !help command for more info on a command.\nYou can also type !help category for more info on a category.```",
     "channel_id": "9876543210987654321",
     "author": {
         "id": "882743264564875285",

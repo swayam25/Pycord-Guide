@@ -3,15 +3,15 @@ title: Prefixed Commands
 description: Learn how to use the commands extension for Pycord.
 ---
 
-import { Aside, TabItem, Tabs } from "@astrojs/starlight/components";
-import NewDiscordComponent from "$components/NewDiscordComponent.astro";
-import PrefixedAnnounceUserMsgPayload from "$payloads/extensions/commands/prefixed-announce-user-msg.json";
+import DiscordComponent from "$components/DiscordComponent.astro";
 import PrefixedAnnounceResponsePayload from "$payloads/extensions/commands/prefixed-announce-response.json";
-import PrefixedPingUserMsgPayload from "$payloads/extensions/commands/prefixed-ping-user-msg.json";
-import PrefixedPingResponsePayload from "$payloads/extensions/commands/prefixed-ping-response.json";
-import PrefixedHelpUserMsgPayload from "$payloads/extensions/commands/prefixed-help-user-msg.json";
-import PrefixedHelpUnknownCommandPayload from "$payloads/extensions/commands/prefixed-help-unknown-command.json";
+import PrefixedAnnounceUserMsgPayload from "$payloads/extensions/commands/prefixed-announce-user-msg.json";
 import PrefixedHelpResponsePayload from "$payloads/extensions/commands/prefixed-help-response.json";
+import PrefixedHelpUnknownCommandPayload from "$payloads/extensions/commands/prefixed-help-unknown-command.json";
+import PrefixedHelpUserMsgPayload from "$payloads/extensions/commands/prefixed-help-user-msg.json";
+import PrefixedPingResponsePayload from "$payloads/extensions/commands/prefixed-ping-response.json";
+import PrefixedPingUserMsgPayload from "$payloads/extensions/commands/prefixed-ping-user-msg.json";
+import { Aside, TabItem, Tabs } from "@astrojs/starlight/components";
 
 Before Discord added slash commands, all bots had prefixed commands. A user would type the bot's prefix
 followed by a word or phrase to invoke a command, such as `?help` or `!help`.
@@ -56,7 +56,7 @@ various advantages, such as:
             await message.channel.send("Unknown command.")
     ```
 
-      <NewDiscordComponent messages={[
+      <DiscordComponent messages={[
           [PrefixedPingUserMsgPayload],
           [PrefixedPingResponsePayload],
           [PrefixedAnnounceUserMsgPayload],
@@ -91,7 +91,7 @@ various advantages, such as:
             await ctx.send("Unknown command.")
     ```
 
-    <NewDiscordComponent messages={[
+    <DiscordComponent messages={[
         [PrefixedPingUserMsgPayload],
         [PrefixedPingResponsePayload],
         [PrefixedAnnounceUserMsgPayload],
@@ -144,7 +144,7 @@ async def ping(ctx): # This is the function we will use to create the command.
 bot.run("token") # Run the bot with your token.
 ```
 
-<NewDiscordComponent
+<DiscordComponent
     messages={[[PrefixedPingUserMsgPayload], [PrefixedPingResponsePayload], [PrefixedHelpUserMsgPayload], [PrefixedHelpResponsePayload]]}
 />
 
@@ -193,7 +193,7 @@ However, since Pycord parses the message at whitespaces, the title will end up b
 message "Greetings! Greetings to you all!". The user can prevent this by typing `!echo "Holiday
 Greetings!" Greetings to you all!`.
 
-<NewDiscordComponent messages={[[PrefixedAnnounceUserMsgPayload], [PrefixedAnnounceResponsePayload]]} />
+<DiscordComponent messages={[[PrefixedAnnounceUserMsgPayload], [PrefixedAnnounceResponsePayload]]} />
 
 Let's check out another example for parameters and parameter types.
 

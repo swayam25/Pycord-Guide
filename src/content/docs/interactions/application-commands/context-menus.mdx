@@ -3,11 +3,11 @@ title: Context Menus
 description: Learn all about Context Menus (User Commands & Message Commands) and how to implement them into your Discord Bot with Pycord!
 ---
 
-import { Aside } from "@astrojs/starlight/components";
-import NewDiscordComponent from "$components/NewDiscordComponent.astro";
+import DiscordComponent from "$components/DiscordComponent.astro";
 import AccountCreationPayload from "$payloads/interactions/application-commands/context-menus-account-creation.json";
-import GetMessageIdUserMsgPayload from "$payloads/interactions/application-commands/context-menus-get-message-id-user-msg.json";
 import GetMessageIdResponsePayload from "$payloads/interactions/application-commands/context-menus-get-message-id-response.json";
+import GetMessageIdUserMsgPayload from "$payloads/interactions/application-commands/context-menus-get-message-id-user-msg.json";
+import { Aside } from "@astrojs/starlight/components";
 
 When you right-click a message, you may see an option called "Apps". Hover over it, and you can see commands a bot can run with that message. These are called message commands.
 
@@ -27,7 +27,7 @@ async def account_creation_date(ctx, member: discord.Member):  # user commands r
     await ctx.respond(f"{member.name}'s account was created on {member.created_at}")
 ```
 
-<NewDiscordComponent messages={[AccountCreationPayload]} />
+<DiscordComponent messages={[AccountCreationPayload]} />
 
 ## Message Commands
 
@@ -37,7 +37,7 @@ async def get_message_id(ctx, message: discord.Message):  # message commands ret
     await ctx.respond(f"Message ID: `{message.id}`")
 ```
 
-<NewDiscordComponent messages={[[GetMessageIdUserMsgPayload], [GetMessageIdResponsePayload]]} />
+<DiscordComponent messages={[[GetMessageIdUserMsgPayload], [GetMessageIdResponsePayload]]} />
 
 ## Related Topics
 

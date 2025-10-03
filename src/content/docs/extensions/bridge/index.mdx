@@ -3,16 +3,16 @@ title: Bridge
 description: Learn about Bridge Commands in Pycord
 ---
 
-import NewDiscordComponent from "$components/NewDiscordComponent.astro";
-import HelloSlashResponsePayload from "$payloads/extensions/bridge/hello-slash-response.json";
-import HelloPrefixedUserMsgPayload from "$payloads/extensions/bridge/hello-prefixed-user-msg.json";
-import HelloPrefixedResponsePayload from "$payloads/extensions/bridge/hello-prefixed-response.json";
-import ByeSlashResponsePayload from "$payloads/extensions/bridge/bye-slash-response.json";
-import ByePrefixedUserMsgPayload from "$payloads/extensions/bridge/bye-prefixed-user-msg.json";
+import DiscordComponent from "$components/DiscordComponent.astro";
 import ByePrefixedResponsePayload from "$payloads/extensions/bridge/bye-prefixed-response.json";
-import SumSlashResponsePayload from "$payloads/extensions/bridge/sum-slash-response.json";
-import SumPrefixedUserMsgPayload from "$payloads/extensions/bridge/sum-prefixed-user-msg.json";
+import ByePrefixedUserMsgPayload from "$payloads/extensions/bridge/bye-prefixed-user-msg.json";
+import ByeSlashResponsePayload from "$payloads/extensions/bridge/bye-slash-response.json";
+import HelloPrefixedResponsePayload from "$payloads/extensions/bridge/hello-prefixed-response.json";
+import HelloPrefixedUserMsgPayload from "$payloads/extensions/bridge/hello-prefixed-user-msg.json";
+import HelloSlashResponsePayload from "$payloads/extensions/bridge/hello-slash-response.json";
 import SumPrefixedResponsePayload from "$payloads/extensions/bridge/sum-prefixed-response.json";
+import SumPrefixedUserMsgPayload from "$payloads/extensions/bridge/sum-prefixed-user-msg.json";
+import SumSlashResponsePayload from "$payloads/extensions/bridge/sum-slash-response.json";
 
 ## Concept
 
@@ -38,7 +38,7 @@ async def hello(ctx):
 bot.run("TOKEN")
 ```
 
-<NewDiscordComponent messages={[[HelloSlashResponsePayload], [HelloPrefixedUserMsgPayload], [HelloPrefixedResponsePayload]]} />
+<DiscordComponent messages={[[HelloSlashResponsePayload], [HelloPrefixedUserMsgPayload], [HelloPrefixedResponsePayload]]} />
 
 ## Syntax
 
@@ -72,7 +72,7 @@ def setup(bot):
 
 The cog will automatically split the Bridge Command into their Slash Command and Prefixed Command counterparts.
 
-<NewDiscordComponent
+<DiscordComponent
     messages={[
         [HelloSlashResponsePayload],
         [HelloPrefixedUserMsgPayload],
@@ -107,4 +107,4 @@ async def sum(ctx, a: int, b: int):
 bot.run("TOKEN")
 ```
 
-<NewDiscordComponent messages={[[SumSlashResponsePayload], [SumPrefixedUserMsgPayload], [SumPrefixedResponsePayload]]} />
+<DiscordComponent messages={[[SumSlashResponsePayload], [SumPrefixedUserMsgPayload], [SumPrefixedResponsePayload]]} />

@@ -3,9 +3,9 @@ title: Contributing to Pycord
 description: Learn how to contribute to Pycord - code, documentation, and community.
 ---
 
-import { Aside, Steps, TabItem, Tabs } from "@astrojs/starlight/components";
-import NewDiscordComponent from "../../../components/NewDiscordComponent.astro";
 import PaillatExamplePayload from "$payloads/more/contributing/paillat-example-msg.json";
+import { Aside, Steps, TabItem, Tabs } from "@astrojs/starlight/components";
+import DiscordComponent from "../../../components/DiscordComponent.astro";
 
 First off, thanks for taking the time to contribute! It makes Pycord substantially better. 👍
 
@@ -218,10 +218,10 @@ First, import the necessary component:
 
 {/* prettier-ignore */}
 ```mdx
-import NewDiscordComponent from "$components/NewDiscordComponent.astro";
+import DiscordComponent from "$components/DiscordComponent.astro";
 ```
 
-Under the hood, `NewDiscordComponent` uses the [Widgetbot message renderer](https://github.com/widgetbot-io/message-renderer/).
+Under the hood, `DiscordComponent` uses the [Widgetbot message renderer](https://github.com/widgetbot-io/message-renderer/).
 This means that it works by displaying actual Discord messages payloads.
 
 <Steps>
@@ -234,9 +234,9 @@ This means that it works by displaying actual Discord messages payloads.
         import DorukyumHelloPayload from "$payloads/more/contributing/dorukyum-hello-user-msg.json";
        ```
 
-    3. Use the `NewDiscordComponent` component to render the message(s):
+    3. Use the `DiscordComponent` component to render the message(s):
        ```mdx
-        <NewDiscordComponent messages={[DorukyumHelloPayload]} />
+        <DiscordComponent messages={[DorukyumHelloPayload]} />
        ```
        The `messages` prop takes either an array of message payloads or an array of arrays of message payloads to display in groups.
 
@@ -244,7 +244,7 @@ This means that it works by displaying actual Discord messages payloads.
 
 This is what the above example message would look like:
 
-<NewDiscordComponent messages={[PaillatExamplePayload]} />
+<DiscordComponent messages={[PaillatExamplePayload]} />
 
 Here is a simple message command to easily obtain a message payload from Discord:
 

@@ -77,15 +77,34 @@ If you are upgrading from a previous version of Pycord, you can use the followin
 
 If you are migrating from another library, say, `discord.py`, first of all, you need to uninstall it.
 
+{/* prettier-ignore */}
 <Tabs>
-    <TabItem label="pip">```bash pip uninstall discord.py ```</TabItem>
-    <TabItem label="uv">```bash uv remove discord.py ```</TabItem>
+    <TabItem label="pip">
+        ```bash
+        pip uninstall discord.py
+        ```
+    </TabItem>
+    <TabItem label="uv">
+        ```bash
+        uv remove discord.py
+        ```
+    </TabItem>
 </Tabs>
 Then, you can install Pycord, it's as simple as that!:
 
-```bash
-pip install py-cord
-```
+{/* prettier-ignore */}
+<Tabs>
+    <TabItem label="pip">
+        ```bash
+        pip install py-cord
+        ```
+    </TabItem>
+    <TabItem label="uv">
+        ```bash
+        uv add py-cord
+        ```
+    </TabItem>
+</Tabs>
 
 <Aside type="caution">Uninstalling `discord.py` *after* installing `py-cord` can cause issues. Make sure to uninstall it first!</Aside>
 
@@ -99,8 +118,18 @@ pip install py-cord
 
 To install the development build, you can use the following command in your terminal:
 
-```bash
-pip install -U git+https://github.com/Pycord-Development/pycord
-```
+{/* prettier-ignore */}
+<Tabs>
+    <TabItem label="pip">
+        ```bash
+        pip install -U git+https://github.com/Pycord-Development/pycord
+        ```
+    </TabItem>
+    <TabItem label="uv">
+        ```bash
+        uv add --upgrade git+https://github.com/Pycord-Development/pycord
+        ```
+    </TabItem>
+</Tabs>
 
 <Aside type="danger">Git is required to install this build. [Learn how you can install Git](/more/git/).</Aside>

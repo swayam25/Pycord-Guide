@@ -20,12 +20,12 @@ The official Guide for Pycord, explaining Pycord's features and how to use them
 2. Install dependencies
 
     ```sh
-    bun i
+    pnpm i
     ```
 
 3. Start the development server
     ```sh
-    bun run dev
+    pnpm run dev
     ```
 
 ## ❤️ Contributing
@@ -37,6 +37,6 @@ The official Guide for Pycord, explaining Pycord's features and how to use them
     - Make sure the app is working as expected.
 
 - Code Formatting
-    - Run `bun run format` before committing your changes or use [`Prettier`](https://prettier.io/) extension in your code editor.
+    - Run `pnpm run format` before committing your changes or use [`Prettier`](https://prettier.io/) extension in your code editor.
 
 - For more information on contributing, see the [Contributing Guide](https://guide.pycord.dev/more/contributing).

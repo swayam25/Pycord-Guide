@@ -3,22 +3,21 @@ title: Error Handling
 description: All about handling errors.
 ---
 
+import AvatarDmResponsePayload from "$payloads/popular-topics/error-handling/avatar-dm-response.json";
+import AvatarDmUserMsgPayload from "$payloads/popular-topics/error-handling/avatar-dm-user-msg.json";
+import AvatarGuildErrorPayload from "$payloads/popular-topics/error-handling/avatar-guild-error.json";
+import AvatarGuildUserMsgPayload from "$payloads/popular-topics/error-handling/avatar-guild-user-msg.json";
+import FeedbackResponsePayload from "$payloads/popular-topics/error-handling/feedback-response.json";
+import FeedbackThanksPayload from "$payloads/popular-topics/error-handling/feedback-thanks.json";
+import FeedbackTimeoutErrorPayload from "$payloads/popular-topics/error-handling/feedback-timeout-error.json";
+import FeedbackTimeoutResponsePayload from "$payloads/popular-topics/error-handling/feedback-timeout-response.json";
+import FeedbackUserMessagePayload from "$payloads/popular-topics/error-handling/feedback-user-message.json";
+import PingCooldownErrorPayload from "$payloads/popular-topics/error-handling/ping-cooldown-error.json";
+import PingCooldownFirstPayload from "$payloads/popular-topics/error-handling/ping-cooldown-first.json";
+import SecretNonOwnerResponsePayload from "$payloads/popular-topics/error-handling/secret-non-owner-response.json";
+import SecretOwnerResponsePayload from "$payloads/popular-topics/error-handling/secret-owner-response.json";
 import { Aside } from "@astrojs/starlight/components";
 import DiscordComponent from "../../../components/DiscordComponent.astro";
-import NewDiscordComponent from "../../../components/NewDiscordComponent.astro";
-import FeedbackResponsePayload from "$payloads/popular-topics/error-handling/feedback-response.json";
-import FeedbackUserMessagePayload from "$payloads/popular-topics/error-handling/feedback-user-message.json";
-import FeedbackThanksPayload from "$payloads/popular-topics/error-handling/feedback-thanks.json";
-import FeedbackTimeoutResponsePayload from "$payloads/popular-topics/error-handling/feedback-timeout-response.json";
-import FeedbackTimeoutErrorPayload from "$payloads/popular-topics/error-handling/feedback-timeout-error.json";
-import SecretOwnerResponsePayload from "$payloads/popular-topics/error-handling/secret-owner-response.json";
-import SecretNonOwnerResponsePayload from "$payloads/popular-topics/error-handling/secret-non-owner-response.json";
-import AvatarDmUserMsgPayload from "$payloads/popular-topics/error-handling/avatar-dm-user-msg.json";
-import AvatarDmResponsePayload from "$payloads/popular-topics/error-handling/avatar-dm-response.json";
-import AvatarGuildUserMsgPayload from "$payloads/popular-topics/error-handling/avatar-guild-user-msg.json";
-import AvatarGuildErrorPayload from "$payloads/popular-topics/error-handling/avatar-guild-error.json";
-import PingCooldownFirstPayload from "$payloads/popular-topics/error-handling/ping-cooldown-first.json";
-import PingCooldownErrorPayload from "$payloads/popular-topics/error-handling/ping-cooldown-error.json";
 
 ## About
 
@@ -66,13 +65,13 @@ bot.run("TOKEN")
 
 If you respond within 30 seconds, the interaction will look like so:
 
-<NewDiscordComponent messages={[FeedbackResponsePayload, FeedbackUserMessagePayload, FeedbackThanksPayload]} />
+<DiscordComponent messages={[FeedbackResponsePayload, FeedbackUserMessagePayload, FeedbackThanksPayload]} />
 
 <br />
 
 Otherwise, if you don't respond in time, the interaction will go as follows:
 
-<NewDiscordComponent messages={[FeedbackTimeoutResponsePayload, FeedbackTimeoutErrorPayload]} />
+<DiscordComponent messages={[FeedbackTimeoutResponsePayload, FeedbackTimeoutErrorPayload]} />
 
 <br />
 
@@ -122,13 +121,13 @@ bot.run("TOKEN")
 
 If your ID is registered as the owner ID, you'll get the following:
 
-<NewDiscordComponent messages={[SecretOwnerResponsePayload]} />
+<DiscordComponent messages={[SecretOwnerResponsePayload]} />
 
 <br />
 
 Any other user whose ID doesn't match the bot owner's will get the following:
 
-<NewDiscordComponent messages={[SecretNonOwnerResponsePayload]} />
+<DiscordComponent messages={[SecretNonOwnerResponsePayload]} />
 
 <br />
 
@@ -194,13 +193,13 @@ bot.run("TOKEN")
 
 If you use this command in a DM context, you'll get the following:
 
-<NewDiscordComponent messages={[AvatarDmUserMsgPayload, AvatarDmResponsePayload]} />
+<DiscordComponent messages={[AvatarDmUserMsgPayload, AvatarDmResponsePayload]} />
 
 <br />
 
 Otherwise, if used in a guild context:
 
-<NewDiscordComponent messages={[AvatarGuildUserMsgPayload, AvatarGuildErrorPayload]} />
+<DiscordComponent messages={[AvatarGuildUserMsgPayload, AvatarGuildErrorPayload]} />
 
 <br />
 
@@ -245,7 +244,7 @@ If you've subclassed your bot, the `on_application_command_error` event will be 
 
 The error handling used above will yield this interaction if the command is used again too quickly:
 
-<NewDiscordComponent messages={[PingCooldownFirstPayload, PingCooldownErrorPayload]} />
+<DiscordComponent messages={[PingCooldownFirstPayload, PingCooldownErrorPayload]} />
 
 <br />
 
