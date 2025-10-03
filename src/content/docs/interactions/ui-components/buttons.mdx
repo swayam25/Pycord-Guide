@@ -3,9 +3,9 @@ title: Buttons
 description: Learn all about implementing buttons in your Discord Bot using Pycord.
 ---
 
+import DiscordComponent from "$components/DiscordComponent.astro";
+import ButtonResponsePayload from "$payloads/interactions/ui-components/buttons-button-response.json";
 import { Aside, TabItem, Tabs } from "@astrojs/starlight/components";
-import DiscordComponent from "../../../../components/DiscordComponent.astro";
-import { emojiToTwemoji } from "../../../../utils/emoji";
 
 On May 26, 2021, Discord added a new interaction called buttons. Instead of reactions, bots could now send buttons and users could use them to interact with bots. This opened up a whole new world of possibilities for bots. Soon after, developers made calculators, polls, and games like blackjack, UNO, and even Minecraft! Buttons provided a clear and easy to use interface for interacting with bots.
 
@@ -40,19 +40,7 @@ bot.run("TOKEN") # Run the bot
 
 Using this command should return the following message:
 
-<DiscordComponent>
-    <discord-message profile="robocord">
-        <discord-command slot="reply" profile="bob" command="/button"></discord-command>
-        This is a button!
-        <discord-attachments slot="components">
-            <discord-action-row>
-                <discord-button type="primary" emoji={emojiToTwemoji("😎")}>
-                    Click me!
-                </discord-button>
-            </discord-action-row>
-        </discord-attachments>
-    </discord-message>
-</DiscordComponent>
+<DiscordComponent messages={[ButtonResponsePayload]} />
 
 As you can see, we create a class called `MyView` that subclasses [`discord.ui.View`](https://docs.pycord.dev/en/stable/api/ui_kit.html#discord.ui.View).
 
@@ -74,7 +62,7 @@ This is the basic syntax of creating a button. What you create with it is up to 
 
 Check out the [`discord.ButtonStyle`](https://docs.pycord.dev/en/stable/api/enums.html#discord.ButtonStyle) class for more information.
 
-![Different Button Styles](/interactions/button-styles.webp)
+![Different Button Styles]($images/interactions/button-styles.webp)
 
 You can set a button's style by adding the `style` argument in the [`discord.ui.button`](https://docs.pycord.dev/en/stable/api/ui_kit.html#discord.ui.button) decorator.
 

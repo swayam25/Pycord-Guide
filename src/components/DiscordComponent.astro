@@ -1,5 +1,17 @@
-<div class="not-content discord-component-wrapper">
-    <discord-messages>
-        <slot />
-    </discord-messages>
+---
+import { MessageGroup } from "@widgetbot/message-renderer";
+let { messages, thread = false } = Astro.props;
+if (!Array.isArray(messages[0])) {
+    messages = [messages];
+}
+---
+
+<div class="bg-discord-bg flex flex-col gap-y-4 rounded-lg border border-gray-600 py-4 align-middle">
+    {
+        messages.map((messages_group: any) => (
+            <div class="discord-messages">
+                <MessageGroup messages={messages_group} thread={thread} client:only="react" />
+            </div>
+        ))
+    }
 </div>

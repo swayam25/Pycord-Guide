@@ -3,8 +3,9 @@ title: More Features
 description: More features to make your bot cool and snazzy.
 ---
 
-import { Aside, Code, TabItem, Tabs } from "@astrojs/starlight/components";
-import DiscordComponent from "../../../components/DiscordComponent.astro";
+import DiscordComponent from "$components/DiscordComponent.astro";
+import EmbedPayload from "$payloads/getting-started/more-features-embed.json";
+import PycordGuideEmbedPayload from "$payloads/getting-started/more-features-pycord-guide-embed.json";
 
 So, you just created your first Pycord bot! Now, let's add some more features to it. This will include adding event handlers, waiting for user response, styling the messages, and more.
 
@@ -66,44 +67,7 @@ Here, we check if the message is from the user that sent the command. We simply 
 
 Embeds are a Discord feature that allows applications to format their messages in cool embedded format, enabling your bot to lay out messages with a lot of text into neat fields.
 
-<DiscordComponent>
-    <discord-message profile="robocord">
-        <discord-embed
-            slot="embeds"
-            color="#5865F2"
-            embed-title="Pycord Guide"
-            url="https://guide.pycord.dev"
-            author-name="Pycord Team"
-            author-image="/logo.webp"
-            author-url="https://github.com/Pycord-Development/guide"
-            thumbnail="/logo.webp"
-            image="/logo.webp"
-            timestamp="01/09/2021"
-            footer-icon="/logo.webp"
-        >
-            The Pycord Guide is a detailed guide that explains how to use Pycord and all of its features.
-            <discord-embed-fields slot="fields">
-                <discord-embed-field field-title="Getting Started">
-                    The Getting Started section explains how you can get a brand new bot created and running from scratch.
-                </discord-embed-field>
-                <discord-embed-field field-title="Interactions" inline>
-                    Interactions with Pycord
-                </discord-embed-field>
-                <discord-embed-field field-title="Extensions" inline>
-                    Pycord's various Extensions
-                </discord-embed-field>
-                <discord-embed-field field-title="Popular Topics" inline>
-                    Other Popular Topics
-                </discord-embed-field>
-                <discord-embed-field field-title="And More!">
-                    We have so much more! Just explore, and you will find everything you need. If you want another page added, open an issue on the
-                    GitHub.
-                </discord-embed-field>
-            </discord-embed-fields>
-            <span slot="footer">Created with 💖 by the Pycord Team & Contributors</span>
-        </discord-embed>
-    </discord-message>
-</DiscordComponent>
+<DiscordComponent messages={[PycordGuideEmbedPayload]} />
 
 Creating embeds is simple! Just create an instance of [`discord.Embed`](https://docs.pycord.dev/en/stable/api/data_classes.html#discord.Embed) and edit it to your liking. Once you're done, send it!
 
@@ -135,39 +99,7 @@ async def hello(ctx):
 bot.run("TOKEN")
 ```
 
-<DiscordComponent>
-    <discord-message profile="robocord">
-        <discord-command slot="reply" profile="bob" command="/count"></discord-command>
-        Hello! Here's a cool embed.
-        <discord-embed
-            slot="embeds"
-            color="#5865F2"
-            embed-title="My Amazing Embed"
-            author-name="Pycord Team"
-            author-image="/logo.webp"
-            thumbnail="/logo.webp"
-            image="/logo.webp"
-            footer-icon="/logo.webp"
-        >
-            Embeds are super easy, barely an inconvenience.
-            <discord-embed-fields slot="fields">
-                <discord-embed-field field-title="A Normal Field">
-                    A really nice field with some information. <strong>The description as well as the fields support markdown!</strong>
-                </discord-embed-field>
-                <discord-embed-field field-title="Inline Field 1" inline>
-                    Inline Field 1
-                </discord-embed-field>
-                <discord-embed-field field-title="Inline Field 2" inline>
-                    Inline Field 2
-                </discord-embed-field>
-                <discord-embed-field field-title="Inline Field 3" inline>
-                    Inline Field 3
-                </discord-embed-field>
-            </discord-embed-fields>
-            <span slot="footer">Footer! No markdown here.</span>
-        </discord-embed>
-    </discord-message>
-</DiscordComponent>
+<DiscordComponent messages={[EmbedPayload]} />
 
 This simple command sends replies to a [slash command](/interactions/application-commands/slash-commands/) with an embed. Let's break it down:
 

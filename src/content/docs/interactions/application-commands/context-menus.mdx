@@ -3,8 +3,11 @@ title: Context Menus
 description: Learn all about Context Menus (User Commands & Message Commands) and how to implement them into your Discord Bot with Pycord!
 ---
 
+import DiscordComponent from "$components/DiscordComponent.astro";
+import AccountCreationPayload from "$payloads/interactions/application-commands/context-menus-account-creation.json";
+import GetMessageIdResponsePayload from "$payloads/interactions/application-commands/context-menus-get-message-id-response.json";
+import GetMessageIdUserMsgPayload from "$payloads/interactions/application-commands/context-menus-get-message-id-user-msg.json";
 import { Aside } from "@astrojs/starlight/components";
-import DiscordComponent from "../../../../components/DiscordComponent.astro";
 
 When you right-click a message, you may see an option called "Apps". Hover over it, and you can see commands a bot can run with that message. These are called message commands.
 
@@ -24,12 +27,7 @@ async def account_creation_date(ctx, member: discord.Member):  # user commands r
     await ctx.respond(f"{member.name}'s account was created on {member.created_at}")
 ```
 
-<DiscordComponent>
-    <discord-message profile="robocord">
-        <discord-command slot="reply" profile="bob" command="Account Creation Date"></discord-command>
-        User's account was created on 2020-01-01
-    </discord-message>
-</DiscordComponent>
+<DiscordComponent messages={[AccountCreationPayload]} />
 
 ## Message Commands
 
@@ -39,13 +37,7 @@ async def get_message_id(ctx, message: discord.Message):  # message commands ret
     await ctx.respond(f"Message ID: `{message.id}`")
 ```
 
-<DiscordComponent>
-    <discord-message profile="dorukyum">Do. Or do not. There is no try.</discord-message>
-    <discord-message profile="robocord">
-        <discord-command slot="reply" profile="bob" command="Get Message ID"></discord-command>
-        Message ID: <code>930650407917748286</code>
-    </discord-message>
-</DiscordComponent>
+<DiscordComponent messages={[[GetMessageIdUserMsgPayload], [GetMessageIdResponsePayload]]} />
 
 ## Related Topics
 

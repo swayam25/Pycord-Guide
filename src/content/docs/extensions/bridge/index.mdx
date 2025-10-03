@@ -3,7 +3,16 @@ title: Bridge
 description: Learn about Bridge Commands in Pycord
 ---
 
-import DiscordComponent from "../../../../components/DiscordComponent.astro";
+import DiscordComponent from "$components/DiscordComponent.astro";
+import ByePrefixedResponsePayload from "$payloads/extensions/bridge/bye-prefixed-response.json";
+import ByePrefixedUserMsgPayload from "$payloads/extensions/bridge/bye-prefixed-user-msg.json";
+import ByeSlashResponsePayload from "$payloads/extensions/bridge/bye-slash-response.json";
+import HelloPrefixedResponsePayload from "$payloads/extensions/bridge/hello-prefixed-response.json";
+import HelloPrefixedUserMsgPayload from "$payloads/extensions/bridge/hello-prefixed-user-msg.json";
+import HelloSlashResponsePayload from "$payloads/extensions/bridge/hello-slash-response.json";
+import SumPrefixedResponsePayload from "$payloads/extensions/bridge/sum-prefixed-response.json";
+import SumPrefixedUserMsgPayload from "$payloads/extensions/bridge/sum-prefixed-user-msg.json";
+import SumSlashResponsePayload from "$payloads/extensions/bridge/sum-slash-response.json";
 
 ## Concept
 
@@ -29,24 +38,7 @@ async def hello(ctx):
 bot.run("TOKEN")
 ```
 
-<DiscordComponent>
-  <discord-message profile="robocord">
-    <discord-command slot="reply" profile="bob" command="/hello"></discord-command>
-
-    Hello!
-
-  </discord-message>
-
-<discord-message profile="bob">!hello</discord-message>
-
-  <discord-message profile="robocord">
-    <discord-reply slot="reply" profile="bob" highlight>!hello</discord-reply>
-
-    Hello!
-
-  </discord-message>
-
-</DiscordComponent>
+<DiscordComponent messages={[[HelloSlashResponsePayload], [HelloPrefixedUserMsgPayload], [HelloPrefixedResponsePayload]]} />
 
 ## Syntax
 
@@ -80,30 +72,16 @@ def setup(bot):
 
 The cog will automatically split the Bridge Command into their Slash Command and Prefixed Command counterparts.
 
-<DiscordComponent>
-    <discord-message profile="robocord">
-        <discord-command slot="reply" profile="bob" command="/hello"></discord-command>
-        Hello!
-    </discord-message>
-    <discord-message profile="bob">!hello</discord-message>
-    <discord-message profile="robocord">
-        <discord-reply slot="reply" profile="bob" highlight>
-            !hello
-        </discord-reply>
-        Hello!
-    </discord-message>
-    <discord-message profile="robocord">
-        <discord-command slot="reply" profile="bob" command="/bye"></discord-command>
-        Bye!
-    </discord-message>
-    <discord-message profile="bob">!bye</discord-message>
-    <discord-message profile="robocord">
-        <discord-reply slot="reply" profile="bob" highlight>
-            !bye
-        </discord-reply>
-        Bye!
-    </discord-message>
-</DiscordComponent>
+<DiscordComponent
+    messages={[
+        [HelloSlashResponsePayload],
+        [HelloPrefixedUserMsgPayload],
+        [HelloPrefixedResponsePayload],
+        [ByeSlashResponsePayload],
+        [ByePrefixedUserMsgPayload],
+        [ByePrefixedResponsePayload],
+    ]}
+/>
 
 ### Deferring
 
@@ -129,21 +107,4 @@ async def sum(ctx, a: int, b: int):
 bot.run("TOKEN")
 ```
 
-<DiscordComponent>
-  <discord-message profile="robocord">
-    <discord-command slot="reply" profile="bob" command="/sum"></discord-command>
-
-    4
-
-  </discord-message>
-
-<discord-message profile="bob">!sum 2 2</discord-message>
-
-  <discord-message profile="robocord">
-    <discord-reply slot="reply" profile="bob" highlight>!sum 2 2</discord-reply>
-
-    4
-
-  </discord-message>
-
-</DiscordComponent>
+<DiscordComponent messages={[[SumSlashResponsePayload], [SumPrefixedUserMsgPayload], [SumPrefixedResponsePayload]]} />

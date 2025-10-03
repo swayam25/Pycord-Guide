@@ -3,8 +3,14 @@ title: Help Command
 description: Learn how to create custom help commands for your Pycord bot
 ---
 
+import DiscordComponent from "$components/DiscordComponent.astro";
+import PrefixedHelpDefaultResponse from "$payloads/extensions/commands/help-default-response.json";
+import PrefixedHelpErrorEmbed from "$payloads/extensions/commands/help-error-embed.json";
+import PrefixedHelpUserMsgErrorEmbed from "$payloads/extensions/commands/help-error-user-msg.json";
+import PrefixedHelpMinimalEmbed from "$payloads/extensions/commands/help-minimal-embed.json";
+import PrefixedHelpMinimalResponse from "$payloads/extensions/commands/help-minimal-response.json";
+import PrefixedHelpUserMsgPayload from "$payloads/extensions/commands/prefixed-help-user-msg.json";
 import { Aside, TabItem, Tabs } from "@astrojs/starlight/components";
-import DiscordComponent from "../../../../components/DiscordComponent.astro";
 
 Pycord's `commands` extension comes with a built-in help command. In this guide, we will take a look at them as well as learn how to create your own. Let's dive in!
 
@@ -61,27 +67,14 @@ There are two types of built-in help commands:
     bot.run("token")
     ```
 
-    <DiscordComponent>
-        <discord-message profile="dorukyum">
-        !help
-        </discord-message>
-
-        <discord-message profile="robocord">
-        <code>
-            No Category:
-            <br />
-            <div style={{ paddingLeft: "2em" }}>
-            !help Shows this message
-            <br />
-            !ping
-            </div>
-            <br />
-            Type !help command for more info on a command.
-            <br />
-            You can also type !help category for more info on a category.
-        </code>
-        </discord-message>
-    </DiscordComponent>
+      <DiscordComponent
+          messages={
+              [
+                  [PrefixedHelpUserMsgPayload],
+                  [PrefixedHelpDefaultResponse],
+              ]
+          }
+      />
 
   </TabItem>
 
@@ -97,22 +90,15 @@ There are two types of built-in help commands:
     bot.run("token")
     ```
 
-    <DiscordComponent>
-        <discord-message profile="dorukyum">
-            !help
-        </discord-message>
 
-        <discord-message profile="robocord">
-            Use <code>!help &#91;command&#93;</code> for more info on a command.
-            <br />
-            You can also use <code>!help &#91;category&#93;</code> for more info on a category.
-            <br />
-            <br />
-            <strong><u>No Category</u></strong>
-            <br />
-            help ping
-        </discord-message>
-    </DiscordComponent>
+      <DiscordComponent
+          messages={
+              [
+                  [PrefixedHelpUserMsgPayload],
+                  [PrefixedHelpMinimalResponse],
+              ]
+          }
+          />
 
   </TabItem>
 </Tabs>
@@ -152,22 +138,7 @@ in an embed, and then send the embed to the destination channel.
 
 Finally, we set this as our new help command using `bot.help_command = MyNewHelp()`.
 
-<DiscordComponent>
-    <discord-message profile="robocord">
-        <discord-embed slot="embeds">
-            Use <code>!help &#91;command&#93;</code> for more info on a command.
-            <br />
-            You can also use <code>!help &#91;category&#93;</code> for more info on a category.
-            <br />
-            <br />
-            <strong>
-                <u>No Category</u>
-            </strong>
-            <br />
-            help ping
-        </discord-embed>
-    </discord-message>
-</DiscordComponent>
+<DiscordComponent messages={[[PrefixedHelpUserMsgPayload], [PrefixedHelpMinimalEmbed]]} />
 
 ## Creating Your Help Command
 
@@ -434,18 +405,7 @@ class MyHelp(commands.HelpCommand):
         await channel.send(embed=embed)
 ```
 
-<DiscordComponent>
-  <discord-message profile="dorukyum">
-    !help update\_pycord
-  </discord-message>
-
-<discord-message profile="robocord">
-    <discord-embed slot="embeds" embed-title="Error" border-color="#ff0000">
-        Command 'update\_pycord' not found.
-    </discord-embed>
-</discord-message>
-
-</DiscordComponent>
+<DiscordComponent messages={[[PrefixedHelpUserMsgErrorEmbed], [PrefixedHelpErrorEmbed]]} />
 
 ## Credits
 

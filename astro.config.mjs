@@ -2,6 +2,10 @@
 import starlight from "@astrojs/starlight";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
+import starlightThemeNova from "starlight-theme-nova";
+
+import react from "@astrojs/react";
+import svelte from "@astrojs/svelte";
 
 // https://astro.build/config
 export default defineConfig({
@@ -12,7 +16,7 @@ export default defineConfig({
             description: "The comprehensive guide for building Discord bots with Pycord - the modern Python Discord API wrapper.",
             favicon: "/favicon.ico",
             logo: {
-                src: "./public/logo.webp",
+                src: "./src/images/logo.webp",
                 alt: "Pycord Logo",
             },
             customCss: ["/src/styles/app.css"],
@@ -125,12 +129,12 @@ export default defineConfig({
                     ],
                 },
             ],
+            plugins: [starlightThemeNova()],
         }),
+        svelte(),
+        react(),
     ],
     vite: {
         plugins: [tailwindcss()],
-        ssr: {
-            noExternal: ["@skyra/discord-components-core"],
-        },
     },
 });
