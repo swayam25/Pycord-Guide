@@ -8,6 +8,9 @@ The official Guide for Pycord, explaining Pycord's features and how to use them
 
 </div>
 
+> [!IMPORTANT]
+> This repository served as a proof‑of‑concept for the Pycord Guide and is no longer actively maintained or updated. Dependencies are likely outdated and some code may not function correctly.
+
 ## 💻 Local Development
 
 1. Clone this repository
